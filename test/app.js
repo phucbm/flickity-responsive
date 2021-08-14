@@ -1,13 +1,10 @@
 jQuery(document).ready(function($){
     /**
-     * Setup HTML
+     * Flickity responsive
+     * https://github.com/phucbm/flickity-responsive
      */
-    $('body').append('<div class="carousel"></div>');
 
-
-    /**
-     * Setup Flickity
-     */
+        // Setup carousel
     const slideCount = 10;
     const $carousel = $(".carousel");
 
@@ -19,7 +16,7 @@ jQuery(document).ready(function($){
         );
     }
 
-    // init flickity responsive
+    // Init Flickity
     $carousel.flickityResponsive({
         cellAlign: "left",
         contain: true,
