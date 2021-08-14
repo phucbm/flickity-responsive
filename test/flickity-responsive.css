@@ -1,0 +1,19 @@
+* {padding:0; margin:0;}
+body {
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+.carousel {
+    width:100%;
+}
+.slide {
+    width:25%;
+    background-size:cover;
+    background-position:center;
+}
+.slide > div {padding-top:130%;}
+
+@media only screen and (max-width:1024px) {
+    .slide {width:70%; max-width:400px;}
+}
