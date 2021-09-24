@@ -1,4 +1,4 @@
-/**
+/*!
  * Flickity responsive v1.1.0
  * https://github.com/phucbm/flickity-responsive
  */
@@ -30,7 +30,7 @@
 })(jQuery);
 
 
-/**
+/*!
  * Responsive Object v1.0.0
  * https://github.com/phucbm/js-gist/blob/main/responsive-object.js
  */
