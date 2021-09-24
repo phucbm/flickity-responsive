@@ -1,4 +1,4 @@
-# Flickity responsive v1.0.0
+# Flickity responsive v1.1.0
 
 A jQuery plugin that adds `responsive` option for Flickity.
 
@@ -6,11 +6,10 @@ A jQuery plugin that adds `responsive` option for Flickity.
 
 > At the time of this plugin was made, Flickity does not officially offer any way to update the options on various screensizes.
 
-You will need to write more code using `matchMedia()` to have that. 
+Read more about the issue here 👉 https://github.com/metafizzy/flickity/issues/233
 
-Read more here 👉 https://github.com/metafizzy/flickity/issues/233
-
-So, I create an jQuery plugin that brings `responsive` to Flickity, just like the way [Slick](https://kenwheeler.github.io/slick/) works.
+So, I create an jQuery plugin that brings `responsive` to Flickity, just like the
+way [Slick](https://kenwheeler.github.io/slick/) works.
 
 You can also test this out on CodePen 👉 https://codepen.io/phucbui/pen/ExmJVZa
 
@@ -63,6 +62,20 @@ $('.carousel').flickityResponsive({
 
 ## FYI
 
-This plugin uses Flickity's API and `matchMedia()` with some logics to decide when to destroy and re-initialize the carousel.
+This plugin uses Flickity's API and `matchMedia()` with some logics to decide when to destroy and re-initialize the
+carousel.
 
 > **⚠️ Important note**: the `breakpoint` property is using CSS `max-width` logic. For instance, when you set `breakpoint:480`, that means responsive settings will be applied when the viewport is `<=480px` (while Slick is `<480px`). Let's be cleared 💎
+
+## Changelog
+
+### v1.1.0 - 2021-09-24
+
+- The core responsive handle has been split into `class ResponsiveObject()` so we can use this feature for other
+  libraries as well.
+
+> See [ResponsiveObject()](https://github.com/phucbm/js-gist/blob/main/responsive-object.js)
+
+### v1.0.0 - 2021-08-14
+
+- jQuery plugin for Flickity responsive

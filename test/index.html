@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flickity responsive</title>
+    <title>Flickity responsive v1.1.0</title>
+
     <!-- CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="flickity.min.css">
     <link rel="stylesheet" href="style.css">
 
     <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
+    <script src="jquery.min.js"></script>
+    <script src="flickity.pkgd.min.js"></script>
     <script src="../flickity-responsive.js"></script>
-    <script src="app.js"></script>
 </head>
 <body>
 
@@ -24,5 +21,43 @@
 <h2>Resize to see the change</h2><br>
 <div class="carousel"></div>
 
+
+<script>
+    /**
+     * Flickity responsive
+     * https://github.com/phucbm/flickity-responsive
+     */
+
+        // Setup carousel
+    const slideCount = 10;
+    const $carousel = $(".carousel");
+
+    // create slides
+    for(let i = 0; i < slideCount; i++){
+        const imageURL = `https://picsum.photos/1920?random=${i}`;
+        $carousel.append(
+            `<div class="slide" style="background-image:url(${imageURL})"><div></div></div>`
+        );
+    }
+
+    // Init Flickity
+    $carousel.flickityResponsive({
+        cellAlign: "left",
+        contain: true,
+        freeScroll: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    wrapAround: true,
+                    cellAlign: "center",
+                    freeScroll: false,
+                    prevNextButtons: false,
+                    pageDots: false
+                }
+            }
+        ]
+    });
+</script>
 </body>
 </html>
