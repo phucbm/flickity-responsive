@@ -1,4 +1,4 @@
-# Flickity responsive v1.1.0
+# Flickity responsive v1.1.0 [![](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 
 A jQuery plugin that adds `responsive` option for Flickity.
 
@@ -11,9 +11,11 @@ Read more about the issue here 👉 https://github.com/metafizzy/flickity/issues
 So, I create an jQuery plugin that brings `responsive` to Flickity, just like the
 way [Slick](https://kenwheeler.github.io/slick/) works.
 
-You can also test this out on CodePen 👉 https://codepen.io/phucbui/pen/ExmJVZa
+## Demo
 
-## Install
+Check the latest demo on CodePen 👉 https://codepen.io/phucbui/pen/ExmJVZa
+
+## Getting started
 
 Add `flickity-responsive.js` to your scripts, in this order 👇
 
@@ -29,10 +31,13 @@ Directly from Github
 
 or
 
-### CDN [![](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
+### CDN
+
+Get the latest minify version thanks for jsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@master/flickity-responsive.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@latest/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
