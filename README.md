@@ -1,4 +1,4 @@
-# Flickity responsive v1.1.0 [![](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
+# Flickity responsive v1.1.1 [![](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 
 A jQuery plugin that adds `responsive` option for Flickity.
 
@@ -73,6 +73,10 @@ carousel.
 > **⚠️ Important note**: the `breakpoint` property is using CSS `max-width` logic. For instance, when you set `breakpoint:480`, that means responsive settings will be applied when the viewport is `<=480px` (while Slick is `<480px`). Let's be cleared 💎
 
 ## Changelog
+
+### v1.1.1 - 2021-09-27
+
+- Fix bug when `responsive` property is not defined.
 
 ### v1.1.0 - 2021-09-24
 
