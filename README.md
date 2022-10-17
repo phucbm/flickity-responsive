@@ -1,90 +1,243 @@
-# Flickity responsive v1.1.1 [![](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
+# Flickity v2.2.2 - Extend v2.0.0
 
-A jQuery plugin that adds `responsive` option for Flickity.
-
-## Introduce
-
-> At the time of this plugin was made, Flickity does not officially offer any way to update the options on various screensizes.
-
-Read more about the issue here 👉 https://github.com/metafizzy/flickity/issues/233
-
-So, I create an jQuery plugin that brings `responsive` to Flickity, just like the
-way [Slick](https://kenwheeler.github.io/slick/) works.
-
-## Demo
-
-Check the latest demo on CodePen 👉 https://codepen.io/phucbui/pen/ExmJVZa
+https://flickity.metafizzy.co/
 
 ## Getting started
 
-Add `flickity-responsive.js` to your scripts, in this order 👇
+### 1. Enqueue
 
-- jQuery
-- Flickity
-- `flickity-responsive.js`
+```php
+wp_enqueue_style( 'flickity-extend' );
+wp_enqueue_script( 'flickity-extend' );
+```
 
-### Download
-
-Directly from Github
-
-[⬇️ flickity-responsive.js](https://raw.githubusercontent.com/phucbm/flickity-responsive/master/flickity-responsive.js)
-
-or
-
-### CDN
-
-Get the latest minify version thanks for jsDelivr
+### 2. Init
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@latest/flickity-responsive.min.js"></script>
+<div class="carousel">
+    <div class="carousel-item">1</div>
+    <div class="carousel-item">2</div>
+</div>
 ```
 
-## Usage
+```js
+// VanillaJS
+new FlickityResponsive(document.querySelector('.your-carousel'), {
+    // options
+    cellAlign: 'left',
+    contain: true
+});
 
-Use `$('.carousel').flickityResponsive()` to initialize your carousel.
+// jQuery
+$('.carousel').flickityResponsive({
+    // options
+    cellAlign: 'left',
+    contain: true
+});
+```
+
+### 3. CSS
+
+Set width for the slide-item using CSS.
+
+```css
+.carousel-item {width:33.33%;}
+```
+
+Details at 👉 https://flickity.metafizzy.co/
+
+## Custom options
+
+| Option | Type | Default | Description |
+| ------ | ------ | ------ | ------ |
+| responsive | array | `[]` | responsive array |
+| destroy | boolean | `false` | destroy carousel |
+| lazyLoadNumber | int/boolean | `true` | adjacent slides to be loaded first |
+| prevArrow | jQuery element | `undefined` | prev arrow |
+| nextArrow | jQuery element | `undefined` | next arrow |
+| indicatorCurrent | jQuery element | `undefined` | update text with the current slide on change |
+| indicatorTotal | jQuery element | `undefined` | update text with total slide on init |
+| indicatorZeroPad | boolean | `true` | zero pad for indicator (ex: 01, 02) |
+| autoPlayInViewport | boolean | `true` | only run autoplay when carousel is in viewport using ScrollSnooper |
+
+## Features
+
+### Responsive
+
+Flickity's layouts are handled entirely by CSS. Hence, there is no JS options to responsive the options 🤯. Check the
+issue [here](https://github.com/metafizzy/flickity/issues/233).
+
+To update options on vary breakpoints, use `$.fn.flickityResponsive()` to init and add property `responsive` just like
+what
+we do with Slick 😍
 
 ```js
-// init flickity responsive
 $('.carousel').flickityResponsive({
-    cellAlign: "left",
+    // Flickity options
+    cellAlign: 'left',
     contain: true,
-    freeScroll: true,
+
+    // Extended option
     responsive: [
         {
-            breakpoint: 1024,
+            breakpoint: 767,
             settings: {
-                wrapAround: true,
-                cellAlign: "center",
-                freeScroll: false,
-                prevNextButtons: false,
-                pageDots: false
+                // Flickity options
+                contain: false,
+                groupCells: '65%',
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                // Flickity options
+                contain: false,
+                groupCells: '80%'
             }
         }
     ]
 });
 ```
 
-## FYI
+`$.fn.flickityResponsive()` comes with the Flickity vendor by default.
 
-This plugin uses Flickity's API and `matchMedia()` with some logics to decide when to destroy and re-initialize the
-carousel.
+> **⚠️ Important note**: the `breakpoint` property is using CSS `max-width` logic. For instance, when you
+> set `breakpoint:480`, that means responsive settings will be applied when the viewport is `<=480px` (while Slick
+> is `<480px`). Let's be cleared 💎
 
-> **⚠️ Important note**: the `breakpoint` property is using CSS `max-width` logic. For instance, when you set `breakpoint:480`, that means responsive settings will be applied when the viewport is `<=480px` (while Slick is `<480px`). Let's be cleared 💎
+### Destroy
+
+Use custom property `destroy` to destroy or init slider at a given breakpoint.
+
+```js
+$slider.flickityResponsive({
+    destroy: true, // destroy slider
+    responsive: [
+        {
+            breakpoint: 1023,
+            settings: {
+                destroy: false, // init slider
+            }
+        }
+    ]
+});
+```
+
+### Lazyload
+
+Lazyload for both `<img>` and `background-image` will be enabled by default.
+
+To set adjacent slides to be loaded first, use custom property `lazyLoadNumber`
+
+```js
+$slider.flickityResponsive({
+    lazyLoadNumber: 2
+});
+```
+
+To use the original properties, simply remove `lazyLoadNumber`
+and add Flickity properties.
+
+```js
+$slider.flickityResponsive({
+    lazyLoad: 2,
+    bgLazyLoad: 2
+});
+```
+
+> 💡 Use [ev_get_lazyload_background_image()](https://github.com/viivue/eevee/blob/master/helper/functions.php#L182) to
+> quickly get html that support lazyload.
+
+### Custom arrows
+
+```js
+$slider.flickityResponsive({
+    prevArrow: $wrapper.find('.flickity-button.previous'),
+    nextArrow: $wrapper.find('.flickity-button.next')
+});
+```
+
+### Indicator
+
+```js
+$slider.flickityResponsive({
+    indicatorCurrent: $wrapper.find('[data-current-slide]'),
+    indicatorTotal: $wrapper.find('[data-total-slide]')
+});
+```
 
 ## Changelog
 
-### v1.1.1 - 2021-09-27
+### [1.9.5] - 2022-09-26
+
+- Return Flickity instance after init
+
+### [1.9.4] - 2022-09-07
+
+- Add CSS for Position relative button
+- Remove Flickity Lazyload Icon
+
+### [1.9.3] - 2022-06-02
+
+- Support init by VanillaJS
+
+### [1.9.2] - 2022-03-11
+
+- Remove `flickity-extended-hybrid-layout`
+- Remove focus box-shadow
+- Add `flickity-button-visible-hover`
+- Add `--flkt-opacity`
+
+### [1.9.1] - 2021-10-28
+
+- Check when init undefined element
+
+### [1.9] - 2021-10-18
+
+- Hide arrows and dots if there is just one single slide
+- Autoplay only run when carousel is in viewport using ScrollSnooper
+- Default dragging motion
+- Default `groupCells:'100%'`
+
+### [1.8] - 2021-10-08
+
+- Add option `indicatorCurrent`, `indicatorTotal` and `indicatorZeroPad`
+
+### [1.7] - 2021-10-07
+
+- Add option `prevArrow` and `nextArrow`
+- Fix click through bug on disabled buttons
+
+### [1.6] - 2021-10-04
+
+- Fix bug: add sync when `asNavFor` is enabled
+
+### [1.5] - 2021-09-27
 
 - Fix bug when `responsive` property is not defined.
 
-### v1.1.0 - 2021-09-24
+### [1.4] - 2021-09-24
 
-- The core responsive handle has been split into `class ResponsiveObject()` so we can use this feature for other
-  libraries as well.
+- Add `lazyLoadNumber` property
+- Refactor Flickity Responsive
 
-> See [ResponsiveObject()](https://github.com/phucbm/js-gist/blob/main/responsive-object.js)
+### [1.3] - 2021-09-10
 
-### v1.0.0 - 2021-08-14
+- Add option `destroy` to destroy slider at any breakpoint.
 
-- jQuery plugin for Flickity responsive
+### [1.2] - 2021-08-17
+
+- Load `bg-lazyload` by default
+- Add default CSS for buttons
+- Fix bug `flickity-fade`: use CSS important to override Flickity's JS transition
+
+### [1.1] - 2021-08-12
+
+- Add `flickity-fade` support inside `flickity-extend`
+- Add hybrid mobile layout
+- Hide arrow if there is only one item
+
+### [1.0] - 2021-08-10
+
+- Add `$.fn.flickityResponsive()` for option's responsiveness.

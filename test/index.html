@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flickity responsive v1.1.1</title>
+    <title>Flickity responsive v2.0.0</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="flickity.min.css">
@@ -19,6 +19,7 @@
 <a id="github" href="https://github.com/phucbm/flickity-responsive" target="_blank">
     <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></a>
 <h2>Resize to see the change</h2><br>
+<p>Destroy on screen larger than 1024px</p>
 <div class="carousel"></div>
 
 
@@ -42,6 +43,7 @@
 
     // Init Flickity
     $carousel.flickityResponsive({
+        destroy: true, // destroy slider
         cellAlign: "left",
         contain: true,
         freeScroll: true,
@@ -49,6 +51,7 @@
             {
                 breakpoint: 1024,
                 settings: {
+                    destroy: false, // enable slider
                     wrapAround: true,
                     cellAlign: "center",
                     freeScroll: false,
