@@ -22,4 +22,6 @@ document.querySelector('[data-description]').innerHTML = packageInfo.description
 /**
  * Lib usage
  */
-Wellii.init();
+const flkty = new Flickity('.carousel', {
+    // options
+});

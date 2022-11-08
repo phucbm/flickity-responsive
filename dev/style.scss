@@ -7,19 +7,35 @@ $page-width: 768px;
 $color-primary: #f1c400;
 $color-on-primary: #141414;
 
+/* external css: flickity.css */
+
 * {
   box-sizing: border-box;
-  border: none;
 }
 
 body {
-  font-family: $font-family;
-  padding: 20px;
-  margin: 0;
+  font-family: sans-serif;
 }
 
-.container {
-  max-width: $page-width;
-  margin-left: auto;
-  margin-right: auto;
+.carousel {
+  background: #FAFAFA;
+}
+
+.carousel-cell {
+  width: 33%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(carousel-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
 }
