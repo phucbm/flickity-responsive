@@ -24,7 +24,7 @@
   "main": "./dist/flickity-responsive.module.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --config config/webpack.dev.js",
+    "dev": "cross-env PORT=8081 webpack serve --config config/webpack.dev.js",
     "build": "cross-env ENTRY=dev webpack --config config/webpack.build.js",
     "prod": "webpack --config config/webpack.prod.js && cross-env TARGET=module webpack --config config/webpack.prod.js",
     "publish": "npm run prod & npm publish"

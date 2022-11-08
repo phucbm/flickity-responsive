@@ -6,6 +6,7 @@ import './style.scss';
 
 // source script
 import '@/_index';
+import {FlickityResponsive} from "@/_index";
 
 // import package info
 const packageInfo = require('../package.json');
@@ -22,6 +23,23 @@ document.querySelector('[data-description]').innerHTML = packageInfo.description
 /**
  * Lib usage
  */
-const flkty = new Flickity('.carousel', {
-    // options
+new FlickityResponsive('.carousel', {
+    cellAlign: "left",
+    contain: true,
+    freeScroll: true,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                wrapAround: true,
+                cellAlign: "center",
+                freeScroll: false,
+                prevNextButtons: false,
+                pageDots: false
+            }
+        }
+    ]
 });
+// const flkty = new FlickityResponsive('.carousel', {
+//     // options
+// });
