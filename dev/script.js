@@ -23,6 +23,7 @@ document.querySelector('[data-description]').innerHTML = packageInfo.description
 /**
  * Lib usage
  */
+// init with vanilla JS
 new FlickityResponsive('.carousel', {
     cellAlign: "left",
     contain: true,
@@ -40,3 +41,24 @@ new FlickityResponsive('.carousel', {
         }
     ]
 });
+
+// init with jQuery
+if(typeof jQuery !== 'undefined'){
+    jQuery('.carousel-2').flickityResponsive({
+        cellAlign: "left",
+        contain: true,
+        freeScroll: true,
+        responsive: [
+            {
+                breakpoint: 748,
+                settings: {
+                    wrapAround: true,
+                    cellAlign: "center",
+                    freeScroll: false,
+                    prevNextButtons: false,
+                    pageDots: false
+                }
+            }
+        ]
+    });
+}

@@ -17,6 +17,12 @@ body {
   font-family: sans-serif;
 }
 
+.container {
+  max-width: $page-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .carousel {
   background: #FAFAFA;
 }
@@ -38,4 +44,8 @@ body {
   line-height: 200px;
   font-size: 80px;
   color: white;
+}
+
+section {
+  margin-bottom: 100px;
 }
