@@ -5,7 +5,6 @@ import '../public/style/fonts.css';
 import './style.scss';
 
 // source script
-import '@/_index';
 import {FlickityResponsive} from "@/_index";
 
 // import package info
