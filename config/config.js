@@ -28,6 +28,7 @@ const bannerConfig = {
 const path = require('path');
 const paths = {
     // Source files
+    root: path.resolve(__dirname, '../'),
     src: path.resolve(__dirname, '../src'),
     entry: path.resolve(__dirname, '../src/_index.js'),
 
