@@ -9,27 +9,24 @@ export class FlickityResponsive{
         new MatchMediaScreen({
             object: options,
             onMatched: (data) => {
-                if(typeof Flickity !== "undefined"){
-                    const flkty = Flickity.data(el);
-                    console.log(flkty);
+                // skip if Flickity is undefined
+                if(typeof Flickity === 'undefined'){
+                    console.warn('Flickity is undefined!');
+                    return;
                 }
-                // if(typeof $carousel.flickity !== undefined){
-                //     // if already have flickity init
-                //     if($carousel.data('flickity') !== undefined){
-                //         // destroy
-                //         $carousel.flickity('destroy');
-                //     }
-                //
-                //     // then init flickity
-                //     $carousel.flickity(data.object);
-                //
-                //     // and resize
-                //     $carousel.flickity('resize');
-                // }else{
-                //     console.warn('Flickity is undefined!');
-                // }
+
+                // get instance
+                let customFlickity = Flickity.data(el);
+
+                // destroy if instance is found
+                if(typeof customFlickity !== 'undefined') customFlickity.destroy();
+
+                // init new instance
+                customFlickity = new Flickity(el, data.object);
+
+                // resize
+                customFlickity.resize();
             }
         });
-
     }
 }

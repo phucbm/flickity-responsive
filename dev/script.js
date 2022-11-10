@@ -29,7 +29,7 @@ new FlickityResponsive('.carousel', {
     freeScroll: true,
     responsive: [
         {
-            breakpoint: 1024,
+            breakpoint: 748,
             settings: {
                 wrapAround: true,
                 cellAlign: "center",
@@ -40,6 +40,3 @@ new FlickityResponsive('.carousel', {
         }
     ]
 });
-// const flkty = new FlickityResponsive('.carousel', {
-//     // options
-// });
