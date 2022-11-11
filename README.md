@@ -5,7 +5,7 @@
 [![jsdelivr](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 [![license](https://badgen.net/github/license/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
 
-> A vanilla JS plugin that adds `responsive` option for Flickity.
+> A vanilla JS plugin that adds `responsive` option for Flickity. And more extendable settings, see [#docs](#docs)
 
 ## Introduction
 
