@@ -79,18 +79,11 @@ const carousel = new FlickityResponsive('.carousel', {
 
 // init with jQuery
 $('.carousel').flickityResponsive({
-    cellAlign: "left",
-    contain: true,
-    freeScroll: true,
     responsive: [
         {
-            breakpoint: 748,
+            breakpoint: 768,
             settings: {
-                wrapAround: true,
-                cellAlign: "center",
-                freeScroll: false,
-                prevNextButtons: false,
-                pageDots: false
+                destroy: true
             }
         }
     ]
