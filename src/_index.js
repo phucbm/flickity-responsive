@@ -1,36 +1,9 @@
-import {MatchMediaScreen} from "match-media-screen";
+import {init} from "./helpers";
 
-/**
- * Init Flickity Responsive
- * @param el
- * @param options
- */
-const init = (el, options) => {
-    // skip if Flickity is undefined
-    if(typeof Flickity === 'undefined'){
-        console.warn('Flickity is undefined!');
-        return false;
-    }
-
-    new MatchMediaScreen({
-        object: options,
-        onMatched: (data) => {
-            // get instance
-            let customFlickity = Flickity.data(el);
-
-            // destroy if instance is found
-            if(typeof customFlickity !== 'undefined') customFlickity.destroy();
-
-            // init new instance
-            customFlickity = new Flickity(el, data.object);
-
-            // resize
-            customFlickity.resize();
-        }
-    });
-
-    return true;
-}
+// override flickity default options
+const defaultFlickityOptions = {
+    contain: true
+};
 
 
 /**
@@ -39,7 +12,7 @@ const init = (el, options) => {
  */
 export class FlickityResponsive{
     constructor(el, options){
-        const isInit = init(el, options);
+        const isInit = init(el, options, defaultFlickityOptions);
         if(!isInit) return undefined;
 
         // get instance
@@ -56,7 +29,7 @@ export class FlickityResponsive{
 if(typeof jQuery !== 'undefined'){
     (function($){
         $.fn.flickityResponsive = function(options){
-            $(this).get().forEach(el => init(el, options));
+            $(this).get().forEach(el => init(el, options, defaultFlickityOptions));
         }
     })(jQuery);
 }
