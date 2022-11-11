@@ -40,9 +40,12 @@ const init = (el, options) => {
 export class FlickityResponsive{
     constructor(el, options){
         const isInit = init(el, options);
+        if(!isInit) return undefined;
 
-        // return Flickity instance if init successfully
-        if(isInit) return Flickity.data(el);
+        // get instance
+        this.flickity = Flickity.data(el);
+
+        return this.flickity;
     }
 }
 
