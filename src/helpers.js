@@ -1,4 +1,5 @@
 import {MatchMediaScreen} from "match-media-screen";
+import {onMatched} from "./on-matched";
 
 /**
  * Init Flickity Responsive
@@ -15,36 +16,8 @@ export function init(el, object, flickityOptions){
 
     new MatchMediaScreen({
         object,
-        onMatched: (data) => {
-            // get instance
-            let customFlickity = Flickity.data(el);
-
-            // destroy if instance is found
-            if(typeof customFlickity !== 'undefined') customFlickity.destroy();
-
-            /** Custom script **/
-            const options = getProcessedOptions({...flickityOptions, ...data.object,});
-
-            // init new instance
-            customFlickity = new Flickity(el, options);
-
-            /** update flickity **/
-            // resize
-            customFlickity.resize();
-        }
+        onMatched: (data) => onMatched(el, {...flickityOptions, ...data.object})
     });
 
     return true;
-}
-
-
-/**
- * Get processed options
- * @param options
- * @returns {*}
- */
-export function getProcessedOptions(options){
-
-
-    return options;
 }

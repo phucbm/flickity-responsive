@@ -2,7 +2,8 @@ import {init} from "./helpers";
 
 // override flickity default options
 const defaultFlickityOptions = {
-    contain: true
+    contain: true,
+    destroy: false,
 };
 
 

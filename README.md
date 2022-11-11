@@ -10,7 +10,7 @@
 ## Introduction
 
 > At the time of this plugin was made, Flickity does not officially offer any way to update the options on various
-> screensizes.
+> screen-sizes.
 
 Read more about the issue here 👉 https://github.com/metafizzy/flickity/issues/233
 
@@ -64,19 +64,14 @@ Just change the name, all other options stay the same.
 
 ```js
 // init with vanilla JS
-new FlickityResponsive('.carousel', {
-    cellAlign: "left",
-    contain: true,
-    freeScroll: true,
+const carousel = new FlickityResponsive('.carousel', {
+    pageDots: false,
     responsive: [
         {
-            breakpoint: 748,
+            breakpoint: 768,
             settings: {
-                wrapAround: true,
-                cellAlign: "center",
-                freeScroll: false,
                 prevNextButtons: false,
-                pageDots: false
+                pageDots: true,
             }
         }
     ]
@@ -99,6 +94,15 @@ $('.carousel').flickityResponsive({
             }
         }
     ]
+});
+```
+
+## Docs
+
+```js
+const carousel = new FlickityResponsive('.carousel', {
+    contain: true, // default in Flickity Responsive
+    destroy: false, // destroy flickity
 });
 ```
 
