@@ -12,6 +12,12 @@ const defaultFlickityOptions = {
     prevArrow: undefined,
     nextArrow: undefined,
     responsiveNavigation: true,
+
+    // indicator
+    indicatorZeroPad: false,
+    indicatorCurrent: undefined,
+    indicatorTotal: undefined,
+
     _class: {
         buttonFreeze: 'flickity-button-freeze'
     }

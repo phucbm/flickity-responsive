@@ -55,6 +55,8 @@ if(typeof jQuery !== 'undefined'){
 // custom arrows
 const carouselArrows = new FlickityResponsive('.carousel-arrows', {
     prevNextButtons: false,
+    indicatorCurrent: document.querySelector('#current'),
+    indicatorTotal: document.querySelector('#total'),
     prevArrow: document.querySelector('#prev'),
     nextArrow: jQuery('#next'),
 });

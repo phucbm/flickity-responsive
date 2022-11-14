@@ -1,6 +1,7 @@
 import {MatchMediaScreen} from "match-media-screen";
 import {onMatched} from "./on-matched";
 import {onResize} from "./on-resize";
+import {onLoad} from "./on-load";
 
 /**
  * Init Flickity Responsive
@@ -27,7 +28,7 @@ export function init(el, object, flickityOptions){
 
 
     // on load
-    onResize(el, {...flickityOptions, object});
+    onLoad(el, {...flickityOptions, object});
 
     return true;
 }
