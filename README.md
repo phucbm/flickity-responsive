@@ -116,6 +116,11 @@ const carousel = new FlickityResponsive('.carousel', {
     prevArrow: undefined, // DOM element, jQuery element
     nextArrow: undefined, // DOM element, jQuery element
     responsiveNavigation: true, // Hide navigation elements if the slider is not slide-able
+
+    // indicator
+    indicatorZeroPad: false,
+    indicatorCurrent: undefined,
+    indicatorTotal: undefined,
 });
 ```
 
