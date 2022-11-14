@@ -1,3 +1,5 @@
+import "@viivue/atomic-css";
+
 // public styles
 import '../public/style/fonts.css';
 
@@ -49,3 +51,10 @@ if(typeof jQuery !== 'undefined'){
         ]
     });
 }
+
+// custom arrows
+const carouselArrows = new FlickityResponsive('.carousel-arrows', {
+    prevNextButtons: false,
+    prevArrow: document.querySelector('#prev'),
+    nextArrow: jQuery('#next'),
+});

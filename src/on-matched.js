@@ -1,3 +1,5 @@
+import {initCustomArrows} from "./custom-arrows";
+
 export function onMatched(el, options){
     // get instance
     let customFlickity = Flickity.data(el);
@@ -12,11 +14,18 @@ export function onMatched(el, options){
         return;
     }
 
-    /** Custom script **/
+    /** Before Init **/
+
+    /** Init **/
     // init new instance
     customFlickity = new Flickity(el, options);
 
-    /** update flickity **/
+    /** After Init **/
+    options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
+
+    // custom arrows
+    initCustomArrows(customFlickity, options);
+
     // resize
     customFlickity.resize();
 }
