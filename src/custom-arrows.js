@@ -43,8 +43,10 @@ export function initCustomArrows(flkty, options){
     options.customArrows = customArrows;
 
     // update disable status
-    if(hasCustomArrow) updateCustomArrowsDisableStatus(flkty, options);
-    flkty.on('change', () => updateCustomArrowsDisableStatus(flkty, options));
+    if(hasCustomArrow){
+        updateCustomArrowsDisableStatus(flkty, options);
+        flkty.on('change', () => updateCustomArrowsDisableStatus(flkty, options));
+    }
 }
 
 
