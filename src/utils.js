@@ -67,3 +67,13 @@ export function getJSONObjectFromString(string){
 
     return options;
 }
+
+
+/**
+ * Get DOM node from jQuery|DOM
+ * @param el
+ * @returns {*}
+ */
+export function getElement(el){
+    return isjQueryElement(el) ? el.get()[0] : el;
+}

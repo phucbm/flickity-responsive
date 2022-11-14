@@ -1,4 +1,4 @@
-import {isjQueryElement} from "./utils";
+import {getElement} from "./utils";
 
 /**
  * Init custom arrows
@@ -23,7 +23,7 @@ export function initCustomArrows(flkty, options){
         if(!options.hasOwnProperty(type)) return;
 
         const arrowInput = options[type];
-        const arrowButton = isjQueryElement(arrowInput) ? arrowInput.get()[0] : arrowInput;
+        const arrowButton = getElement(arrowInput);
 
         // skip if not a object type
         if(typeof arrowButton !== 'object') return;
