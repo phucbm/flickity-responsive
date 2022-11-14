@@ -2,15 +2,15 @@ import {initCustomArrows} from "./custom-arrows";
 
 export function onMatched(el, options){
     // get instance
-    let customFlickity = Flickity.data(el);
-    const hasInitialized = typeof customFlickity !== 'undefined';
+    let flkty = Flickity.data(el);
+    const hasInitialized = typeof flkty !== 'undefined';
 
     // destroy if instance is found
-    if(hasInitialized) customFlickity.destroy();
+    if(hasInitialized) flkty.destroy();
 
     // option: destroy
     if(options.destroy){
-        if(hasInitialized) customFlickity.destroy();
+        if(hasInitialized) flkty.destroy();
         return;
     }
 
@@ -18,14 +18,14 @@ export function onMatched(el, options){
 
     /** Init **/
     // init new instance
-    customFlickity = new Flickity(el, options);
+    flkty = new Flickity(el, options);
 
     /** After Init **/
     options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
 
     // custom arrows
-    initCustomArrows(customFlickity, options);
+    initCustomArrows(flkty, options);
 
     // resize
-    customFlickity.resize();
+    flkty.resize();
 }
