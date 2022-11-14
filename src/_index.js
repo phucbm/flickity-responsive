@@ -1,4 +1,9 @@
 import {init} from "./helpers";
+import {getJSONObjectFromString} from "@/utils";
+
+const attr = {
+    init: 'data-flickity-responsive'
+};
 
 // override flickity default options
 const defaultFlickityOptions = {
@@ -30,7 +35,16 @@ export class FlickityResponsive{
 if(typeof jQuery !== 'undefined'){
     (function($){
         $.fn.flickityResponsive = function(options){
-            $(this).get().forEach(el => init(el, options, defaultFlickityOptions));
+            $(this).get().forEach(el => new FlickityResponsive(el, options));
         }
     })(jQuery);
 }
+
+
+/**
+ * Init with HTML
+ */
+document.querySelectorAll(`[${attr.init}]`).forEach(el => {
+    const options = getJSONObjectFromString(el.getAttribute(attr.init));
+    new FlickityResponsive(el, options);
+});
