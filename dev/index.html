@@ -24,11 +24,16 @@
 
 <div class="container">
 
-    <h1 data-title>Flickity Responsive</h1>
-    <p data-description></p>
 
-    <section>
+    <div class="mb100 pt100">
+        <h1 data-title>Flickity Responsive</h1>
+        <p data-description></p>
+    </div>
+
+
+    <section class="mb100">
         <h2>Init with vanilla JS</h2>
+        <p>Show dots on screen smaller than 768px</p>
         <!-- Flickity HTML init -->
         <div class="carousel">
             <div class="carousel-cell"></div>
@@ -42,8 +47,10 @@
         </div>
     </section>
 
-    <section>
+
+    <section class="mb100">
         <h2>Init with jQuery</h2>
+        <p>Destroy on screen smaller than 768px</p>
         <!-- Flickity HTML init -->
         <div class="carousel-2">
             <div class="carousel-cell"></div>
@@ -51,11 +58,38 @@
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
+        </div>
+    </section>
+
+
+    <section class="mb100">
+        <h2>Init with HTML</h2>
+        <p>Navigation elements (dots, arrows) will auto-hide if the carousel is not slide-able.</p>
+        <div data-flickity-responsive='{ "cellAlign": "left" }'>
+            <div class="carousel-cell" style="width:260px;"></div>
+            <div class="carousel-cell" style="width:260px;"></div>
+        </div>
+    </section>
+
+
+    <section class="mb100">
+        <div class="d-flex jc-space-between ai-center">
+            <h2>Custom arrows</h2>
+            <div class="d-flex ai-center" style="gap:10px;">
+                <button id="prev">Prev</button>
+                <div><span id="current">0</span>/<span id="total">0</span></div>
+                <button id="next">Next</button>
+            </div>
+        </div>
+        <div class="carousel-arrows">
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
         </div>
     </section>
+
 
 </div>
 </body>

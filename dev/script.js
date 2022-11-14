@@ -1,3 +1,5 @@
+import "@viivue/atomic-css";
+
 // public styles
 import '../public/style/fonts.css';
 
@@ -23,19 +25,14 @@ document.querySelector('[data-description]').innerHTML = packageInfo.description
  * Lib usage
  */
 // init with vanilla JS
-new FlickityResponsive('.carousel', {
-    cellAlign: "left",
-    contain: true,
-    freeScroll: true,
+const carousel = new FlickityResponsive('.carousel', {
+    pageDots: false,
     responsive: [
         {
-            breakpoint: 748,
+            breakpoint: 768,
             settings: {
-                wrapAround: true,
-                cellAlign: "center",
-                freeScroll: false,
                 prevNextButtons: false,
-                pageDots: false
+                pageDots: true,
             }
         }
     ]
@@ -44,20 +41,22 @@ new FlickityResponsive('.carousel', {
 // init with jQuery
 if(typeof jQuery !== 'undefined'){
     jQuery('.carousel-2').flickityResponsive({
-        cellAlign: "left",
-        contain: true,
-        freeScroll: true,
         responsive: [
             {
-                breakpoint: 748,
+                breakpoint: 768,
                 settings: {
-                    wrapAround: true,
-                    cellAlign: "center",
-                    freeScroll: false,
-                    prevNextButtons: false,
-                    pageDots: false
+                    destroy: true
                 }
             }
         ]
     });
 }
+
+// custom arrows
+const carouselArrows = new FlickityResponsive('.carousel-arrows', {
+    prevNextButtons: false,
+    indicatorCurrent: document.querySelector('#current'),
+    indicatorTotal: document.querySelector('#total'),
+    prevArrow: document.querySelector('#prev'),
+    nextArrow: jQuery('#next'),
+});

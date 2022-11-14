@@ -1,34 +1,27 @@
-import {MatchMediaScreen} from "match-media-screen";
+import {init} from "./helpers";
+import {getJSONObjectFromString} from "./utils";
 
-/**
- * Init Flickity Responsive
- * @param el
- * @param options
- */
-const init = (el, options) => {
-    new MatchMediaScreen({
-        object: options,
-        onMatched: (data) => {
-            // skip if Flickity is undefined
-            if(typeof Flickity === 'undefined'){
-                console.warn('Flickity is undefined!');
-                return;
-            }
+const _attr = {
+    init: 'data-flickity-responsive'
+};
 
-            // get instance
-            let customFlickity = Flickity.data(el);
+// override flickity default options
+const defaultFlickityOptions = {
+    contain: true,
+    destroy: false,
+    prevArrow: undefined,
+    nextArrow: undefined,
+    responsiveNavigation: true,
 
-            // destroy if instance is found
-            if(typeof customFlickity !== 'undefined') customFlickity.destroy();
+    // indicator
+    indicatorZeroPad: false,
+    indicatorCurrent: undefined,
+    indicatorTotal: undefined,
 
-            // init new instance
-            customFlickity = new Flickity(el, data.object);
-
-            // resize
-            customFlickity.resize();
-        }
-    });
-}
+    _class: {
+        buttonFreeze: 'flickity-button-freeze'
+    }
+};
 
 
 /**
@@ -37,7 +30,13 @@ const init = (el, options) => {
  */
 export class FlickityResponsive{
     constructor(el, options){
-        init(el, options);
+        const isInit = init(el, options, defaultFlickityOptions);
+        if(!isInit) return undefined;
+
+        // get instance
+        this.flickity = Flickity.data(el);
+
+        return this.flickity;
     }
 }
 
@@ -48,7 +47,34 @@ export class FlickityResponsive{
 if(typeof jQuery !== 'undefined'){
     (function($){
         $.fn.flickityResponsive = function(options){
-            $(this).get().forEach(el => init(el, options));
+            $(this).get().forEach(el => new FlickityResponsive(el, options));
+        }
+    })(jQuery);
+}
+
+
+/**
+ * Init with HTML
+ */
+document.querySelectorAll(`[${_attr.init}]`).forEach(el => {
+    const options = getJSONObjectFromString(el.getAttribute(_attr.init));
+    new FlickityResponsive(el, options);
+});
+
+
+/**
+ * Support legacy namespace
+ */
+export class FlickityExtend{
+    constructor(el, options){
+        new FlickityResponsive(el, options);
+    }
+}
+
+if(typeof jQuery !== 'undefined'){
+    (function($){
+        $.fn.flickityExtend = function(options){
+            $(this).get().forEach(el => new FlickityResponsive(el, options));
         }
     })(jQuery);
 }

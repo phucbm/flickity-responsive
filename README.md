@@ -5,12 +5,12 @@
 [![jsdelivr](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 [![license](https://badgen.net/github/license/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
 
-> A vanilla JS plugin that adds `responsive` option for Flickity.
+> A vanilla JS plugin that adds `responsive` option for Flickity. And more extendable settings, see [#docs](#docs)
 
 ## Introduction
 
 > At the time of this plugin was made, Flickity does not officially offer any way to update the options on various
-> screensizes.
+> screen-sizes.
 
 Read more about the issue here 👉 https://github.com/metafizzy/flickity/issues/233
 
@@ -52,7 +52,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.0-alpha/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.1/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
@@ -64,19 +64,14 @@ Just change the name, all other options stay the same.
 
 ```js
 // init with vanilla JS
-new FlickityResponsive('.carousel', {
-    cellAlign: "left",
-    contain: true,
-    freeScroll: true,
+const carousel = new FlickityResponsive('.carousel', {
+    pageDots: false,
     responsive: [
         {
-            breakpoint: 748,
+            breakpoint: 768,
             settings: {
-                wrapAround: true,
-                cellAlign: "center",
-                freeScroll: false,
                 prevNextButtons: false,
-                pageDots: false
+                pageDots: true,
             }
         }
     ]
@@ -84,21 +79,43 @@ new FlickityResponsive('.carousel', {
 
 // init with jQuery
 $('.carousel').flickityResponsive({
-    cellAlign: "left",
-    contain: true,
-    freeScroll: true,
     responsive: [
         {
-            breakpoint: 748,
+            breakpoint: 768,
             settings: {
-                wrapAround: true,
-                cellAlign: "center",
-                freeScroll: false,
-                prevNextButtons: false,
-                pageDots: false
+                destroy: true
             }
         }
     ]
+});
+```
+
+### Init with HTML
+
+Use data attribute to init Flickity Responsive, just exactly like Flickity.
+
+```html
+
+<div data-flickity-responsive='{ "cellAlign": "left", "contain": true }'>
+    <div class="carousel-cell"></div>
+    <div class="carousel-cell"></div>
+    <div class="carousel-cell"></div>
+</div>
+```
+
+> ⚠️ Options set in HTML must be valid JSON.
+
+## Docs
+
+```js
+const carousel = new FlickityResponsive('.carousel', {
+    contain: true, // default in Flickity Responsive
+
+    // Extended options
+    destroy: false, // destroy flickity
+    prevArrow: undefined, // DOM element, jQuery element
+    nextArrow: undefined, // DOM element, jQuery element
+    responsiveNavigation: true, // Hide navigation elements if the slider is not slide-able
 });
 ```
 
