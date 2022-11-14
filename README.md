@@ -90,6 +90,21 @@ $('.carousel').flickityResponsive({
 });
 ```
 
+### Init with HTML
+
+Use data attribute to init Flickity Responsive, just exactly like Flickity.
+
+```html
+
+<div data-flickity-responsive='{ "cellAlign": "left", "contain": true }'>
+    <div class="carousel-cell"></div>
+    <div class="carousel-cell"></div>
+    <div class="carousel-cell"></div>
+</div>
+```
+
+> ⚠️ Options set in HTML must be valid JSON.
+
 ## Docs
 
 ```js
@@ -100,6 +115,7 @@ const carousel = new FlickityResponsive('.carousel', {
     destroy: false, // destroy flickity
     prevArrow: undefined, // DOM element, jQuery element
     nextArrow: undefined, // DOM element, jQuery element
+    responsiveNavigation: true, // Hide navigation elements if the slider is not slide-able
 });
 ```
 

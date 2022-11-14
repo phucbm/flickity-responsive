@@ -24,10 +24,12 @@
 
 <div class="container">
 
-    <div class="mb100">
+
+    <div class="mb100 pt100">
         <h1 data-title>Flickity Responsive</h1>
         <p data-description></p>
     </div>
+
 
     <section class="mb100">
         <h2>Init with vanilla JS</h2>
@@ -45,6 +47,7 @@
         </div>
     </section>
 
+
     <section class="mb100">
         <h2>Init with jQuery</h2>
         <p>Destroy on screen smaller than 768px</p>
@@ -57,6 +60,17 @@
             <div class="carousel-cell"></div>
         </div>
     </section>
+
+
+    <section class="mb100">
+        <h2>Init with HTML</h2>
+        <p>Navigation elements (dots, arrows) will auto-hide if the carousel is not slide-able.</p>
+        <div data-flickity-responsive='{ "cellAlign": "left" }'>
+            <div class="carousel-cell" style="width:260px;"></div>
+            <div class="carousel-cell" style="width:260px;"></div>
+        </div>
+    </section>
+
 
     <section class="mb100">
         <div class="d-flex jc-space-between ai-center">
@@ -74,6 +88,7 @@
             <div class="carousel-cell"></div>
         </div>
     </section>
+
 
 </div>
 </body>

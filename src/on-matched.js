@@ -1,4 +1,5 @@
 import {initCustomArrows} from "./custom-arrows";
+import {responsiveNavigation} from "./responsive-navigation";
 
 export function onMatched(el, options){
     // get instance
@@ -25,6 +26,9 @@ export function onMatched(el, options){
 
     // custom arrows
     initCustomArrows(flkty, options);
+
+    // responsive navigation
+    responsiveNavigation(flkty, options);
 
     // resize
     flkty.resize();

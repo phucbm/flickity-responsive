@@ -1,7 +1,7 @@
 import {init} from "./helpers";
 import {getJSONObjectFromString} from "@/utils";
 
-const attr = {
+const _attr = {
     init: 'data-flickity-responsive'
 };
 
@@ -9,6 +9,12 @@ const attr = {
 const defaultFlickityOptions = {
     contain: true,
     destroy: false,
+    prevArrow: undefined,
+    nextArrow: undefined,
+    responsiveNavigation: true,
+    _class: {
+        buttonFreeze: 'flickity-button-freeze'
+    }
 };
 
 
@@ -44,7 +50,7 @@ if(typeof jQuery !== 'undefined'){
 /**
  * Init with HTML
  */
-document.querySelectorAll(`[${attr.init}]`).forEach(el => {
-    const options = getJSONObjectFromString(el.getAttribute(attr.init));
+document.querySelectorAll(`[${_attr.init}]`).forEach(el => {
+    const options = getJSONObjectFromString(el.getAttribute(_attr.init));
     new FlickityResponsive(el, options);
 });
