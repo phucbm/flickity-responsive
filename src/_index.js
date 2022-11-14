@@ -60,3 +60,21 @@ document.querySelectorAll(`[${_attr.init}]`).forEach(el => {
     const options = getJSONObjectFromString(el.getAttribute(_attr.init));
     new FlickityResponsive(el, options);
 });
+
+
+/**
+ * Support legacy namespace
+ */
+export class FlickityExtend{
+    constructor(el, options){
+        new FlickityResponsive(el, options);
+    }
+}
+
+if(typeof jQuery !== 'undefined'){
+    (function($){
+        $.fn.flickityExtend = function(options){
+            $(this).get().forEach(el => new FlickityResponsive(el, options));
+        }
+    })(jQuery);
+}
