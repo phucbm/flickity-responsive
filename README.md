@@ -95,7 +95,11 @@ $('.carousel').flickityResponsive({
 ```js
 const carousel = new FlickityResponsive('.carousel', {
     contain: true, // default in Flickity Responsive
+
+    // Extended options
     destroy: false, // destroy flickity
+    prevArrow: undefined, // DOM element, jQuery element
+    nextArrow: undefined, // DOM element, jQuery element
 });
 ```
 
