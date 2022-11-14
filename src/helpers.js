@@ -1,5 +1,6 @@
 import {MatchMediaScreen} from "match-media-screen";
 import {onMatched} from "./on-matched";
+import {onResize} from "./on-resize";
 
 /**
  * Init Flickity Responsive
@@ -16,8 +17,17 @@ export function init(el, object, flickityOptions){
 
     new MatchMediaScreen({
         object,
-        onMatched: (data) => onMatched(el, {...flickityOptions, ...data.object})
+
+        // breakpoint found
+        onMatched: data => onMatched(el, {...flickityOptions, ...data.object}),
+
+        // window resize with debounce
+        onUpdate: data => onResize(el, {...flickityOptions, ...data.object})
     });
+
+
+    // on load
+    onResize(el, {...flickityOptions, object});
 
     return true;
 }

@@ -6,16 +6,16 @@
 export function responsiveNavigation(flkty, options){
     if(options.responsiveNavigation !== true) return;
 
-    const pageDotsHolder = flkty.pageDots ? flkty.pageDots.holder : flkty.pageDots;
-    const prevButton = flkty.prevButton ? flkty.prevButton.element : flkty.prevButton;
-    const nextButton = flkty.nextButton ? flkty.nextButton.element : flkty.nextButton;
     const elements = [
-        pageDotsHolder, prevButton, nextButton,
-        options.customArrows.prevArrow.el,
-        options.customArrows.nextArrow.el
+        flkty.pageDots ? flkty.pageDots.holder : undefined,
+        flkty.prevButton ? flkty.prevButton.element : undefined,
+        flkty.nextButton ? flkty.nextButton.element : undefined,
+        options.customArrows ? options.customArrows.prevArrow.el : undefined,
+        options.customArrows ? options.customArrows.nextArrow.el : undefined
     ];
 
     const isSlideable = flkty.slideableWidth > flkty.size.innerWidth;
+
     elements.forEach(el => {
         if(!el || typeof el !== 'object') return;
         if(isSlideable){

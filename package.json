@@ -56,6 +56,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "match-media-screen": "^0.0.1"
+    "match-media-screen": "^0.0.3"
   }
 }

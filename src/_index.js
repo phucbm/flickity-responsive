@@ -1,5 +1,5 @@
 import {init} from "./helpers";
-import {getJSONObjectFromString} from "@/utils";
+import {getJSONObjectFromString} from "./utils";
 
 const _attr = {
     init: 'data-flickity-responsive'
