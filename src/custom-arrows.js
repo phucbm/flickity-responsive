@@ -58,9 +58,9 @@ export function initCustomArrows(flkty, options){
  * @return number
  */
 function getIsSelectedPosition(flkty){
-    const {cells} = flkty;
-    if(cells[0].element.classList.contains('is-selected')) return 0;
-    if(cells.slice(-1)[0].element.classList.contains('is-selected')) return 1;
+    const {selectedIndex, slides} = flkty;
+    if(selectedIndex === 0) return 0;
+    if(selectedIndex === slides.length - 1) return 1;
     return -1;
 }
 
