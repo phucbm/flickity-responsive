@@ -50,14 +50,14 @@ export function initCustomArrows(flkty, options){
 }
 
 /**
- * Get is-selected position
- * return 0 - first index
+ * Get slide position
+ * return 0 - first slide
  * return 1 - last index
- * return -1 - not first/last index
+ * return -1 - not first/last position
  * @param flkty
  * @return number
  */
-function getIsSelectedPosition(flkty){
+function getSlidePosition(flkty){
     const {selectedIndex, slides} = flkty;
     if(selectedIndex === 0) return 0;
     if(selectedIndex === slides.length - 1) return 1;
@@ -75,13 +75,13 @@ function updateCustomArrowsDisableStatus(flkty, options){
     const prevArrow = options.customArrows.prevArrow.el;
     const nextArrow = options.customArrows.nextArrow.el;
 
-    const index = getIsSelectedPosition(flkty);
+    const slidePosition = getSlidePosition(flkty);
 
-    if(index === 0){
+    if(slidePosition === 0){
         // disable prev button
         prevArrow.setAttribute('disabled', 'disabled');
         nextArrow.removeAttribute('disabled');
-    }else if(index === 1){
+    }else if(slidePosition === 1){
         // disable next prev button
         nextArrow.setAttribute('disabled', 'disabled');
         prevArrow.removeAttribute('disabled');
