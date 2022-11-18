@@ -49,6 +49,20 @@ export function initCustomArrows(flkty, options){
     }
 }
 
+/**
+ * Get is-selected position
+ * return 0 - first index
+ * return 1 - last index
+ * return -1 - not first/last index
+ * @param flkty
+ * @return number
+ */
+function getIsSelectedPosition(flkty){
+    const {cells} = flkty;
+    if(cells[0].element.classList.contains('is-selected')) return 0;
+    if(cells.slice(-1)[0].element.classList.contains('is-selected')) return 1;
+    return -1;
+}
 
 /**
  * Update disable status
@@ -58,15 +72,16 @@ export function initCustomArrows(flkty, options){
 function updateCustomArrowsDisableStatus(flkty, options){
     // no disabled status if is wrapAround (infinite)
     if(options.isInfinite) return;
-    const index = flkty.selectedIndex;
     const prevArrow = options.customArrows.prevArrow.el;
     const nextArrow = options.customArrows.nextArrow.el;
+
+    const index = getIsSelectedPosition(flkty);
 
     if(index === 0){
         // disable prev button
         prevArrow.setAttribute('disabled', 'disabled');
         nextArrow.removeAttribute('disabled');
-    }else if(index === flkty.cells.length - 1){
+    }else if(index === 1){
         // disable next prev button
         nextArrow.setAttribute('disabled', 'disabled');
         prevArrow.removeAttribute('disabled');
