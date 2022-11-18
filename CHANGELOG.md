@@ -1,3 +1,7 @@
+### v2.0.2 - 2022-11-18
+
+- Fix bug detect first/last slide to disable prev/next button.
+
 ### v2.0.0 - 2022-11-11
 
 - Refactor dev environment with webpack

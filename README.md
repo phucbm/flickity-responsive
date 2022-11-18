@@ -52,7 +52,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.1/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.2/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
@@ -145,10 +145,17 @@ npm run dev
 
 ### Generate production files
 
-Generate UMD and module version
+Before generate UMD and module version:
+
+1. Update version in `package.json`
+2. Update version in `README.md`
 
 ```shell
+# Generate prod files
 npm run prod
+
+# Publish package
+npm publish
 ```
 
 ### Build sites
@@ -156,5 +163,6 @@ npm run prod
 Build production site
 
 ```shell
+# Netlify build
 npm run build
 ```
