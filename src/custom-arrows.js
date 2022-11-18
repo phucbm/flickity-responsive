@@ -49,6 +49,20 @@ export function initCustomArrows(flkty, options){
     }
 }
 
+/**
+ * Get slide position
+ * return 0 - first slide
+ * return 1 - last index
+ * return -1 - not first/last position
+ * @param flkty
+ * @return number
+ */
+function getSlidePosition(flkty){
+    const {selectedIndex, slides} = flkty;
+    if(selectedIndex === 0) return 0;
+    if(selectedIndex === slides.length - 1) return 1;
+    return -1;
+}
 
 /**
  * Update disable status
@@ -58,15 +72,16 @@ export function initCustomArrows(flkty, options){
 function updateCustomArrowsDisableStatus(flkty, options){
     // no disabled status if is wrapAround (infinite)
     if(options.isInfinite) return;
-    const index = flkty.selectedIndex;
     const prevArrow = options.customArrows.prevArrow.el;
     const nextArrow = options.customArrows.nextArrow.el;
 
-    if(index === 0){
+    const slidePosition = getSlidePosition(flkty);
+
+    if(slidePosition === 0){
         // disable prev button
         prevArrow.setAttribute('disabled', 'disabled');
         nextArrow.removeAttribute('disabled');
-    }else if(index === flkty.cells.length - 1){
+    }else if(slidePosition === 1){
         // disable next prev button
         nextArrow.setAttribute('disabled', 'disabled');
         prevArrow.removeAttribute('disabled');
