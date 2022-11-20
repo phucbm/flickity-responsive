@@ -1,7 +1,5 @@
 import "@viivue/atomic-css";
-
-// public styles
-import '../public/style/fonts.css';
+import 'honcau';
 
 // private style
 import './style.scss';

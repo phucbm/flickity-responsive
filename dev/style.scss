@@ -1,32 +1,3 @@
-/**
- * Variables
- */
-$font-size: 1rem;
-$font-family: 'Finlandica', sans-serif;
-$page-width: 768px;
-$color-primary: #f1c400;
-$color-on-primary: #141414;
-
-/* external css: flickity.css */
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-}
-
-.container {
-  max-width: $page-width;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.carousel {
-  background: #FAFAFA;
-}
-
 .carousel-cell {
   width: 33.33%;
   height: 200px;
