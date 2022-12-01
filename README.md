@@ -3,6 +3,7 @@
 [![release](https://badgen.net/github/release/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/releases/latest)
 [![minified](https://badgen.net/badge/minified/4KB/cyan)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 [![jsdelivr](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
+[![npm weekly download](https://badgen.net/npm/dm/flickity-responsive)](https://www.npmjs.com/package/flickity-responsive)
 [![license](https://badgen.net/github/license/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
 
 > A vanilla JS plugin that adds `responsive` option for Flickity. And more extendable settings, see [#docs](#docs)
