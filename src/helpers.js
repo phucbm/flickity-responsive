@@ -2,7 +2,6 @@ import {MatchMediaScreen} from "match-media-screen";
 import {onMatched} from "./on-matched";
 import {onResize} from "./on-resize";
 import {onLoad} from "./on-load";
-import {isjQueryElement} from "@/utils";
 
 /**
  * Init Flickity Responsive
