@@ -32,3 +32,17 @@ export function init(el, object, flickityOptions){
 
     return true;
 }
+
+
+/**
+ * Has wrap-around options
+ * @param flickity
+ * @param wrapper
+ * @returns boolean
+ */
+export function hasWrapAround(flickity, wrapper){
+    if(flickity) return Math.round(flickity.size.width) > Math.round(flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0));
+
+    const totalWidth = Math.round([...wrapper.children].reduce((acc, node) => acc + node.getBoundingClientRect().width, 0));
+    return Math.round(wrapper.getBoundingClientRect().width) > totalWidth;
+}
