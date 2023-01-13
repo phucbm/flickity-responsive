@@ -32,3 +32,16 @@ export function init(el, object, flickityOptions){
 
     return true;
 }
+
+
+/**
+ * Validate wrapAround option
+ * Compare value between the total item width and viewport width
+ * @param flickity
+ * @param wrapper
+ * @returns boolean
+ */
+export function validateWrapAround(flickity){
+    const totalCellWidth = flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0);
+    return Math.round(flickity.size.width) > Math.round(totalCellWidth);
+}

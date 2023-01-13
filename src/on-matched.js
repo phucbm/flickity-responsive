@@ -1,5 +1,6 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
+import {validateWrapAround} from "./helpers";
 
 export function onMatched(el, options){
     // get instance
@@ -20,6 +21,11 @@ export function onMatched(el, options){
     /** Init **/
     // init new instance
     flkty = new Flickity(el, options);
+
+    // check the wrapAround
+    if(options.wrapAround){
+        flkty.options.wrapAround = validateWrapAround(flkty);
+    }
 
     /** After Init **/
     options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
