@@ -19,18 +19,13 @@ export function onMatched(el, options){
     /** Before Init **/
 
     /** Init **/
-    if(options.wrapAround){
-        if(!flkty){
-            const wrapper = document.querySelector(el);
-            options.wrapAround = validateWrapAround(false, wrapper);
-
-        }else{
-            options.wrapAround = validateWrapAround(flkty);
-        }
-    }
-
     // init new instance
     flkty = new Flickity(el, options);
+
+    // check the wrapAround
+    if(options.wrapAround){
+        flkty.options.wrapAround = validateWrapAround(flkty);
+    }
 
     /** After Init **/
     options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
