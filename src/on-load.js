@@ -1,6 +1,6 @@
 import {initSlidesIndicator} from "./slides-indicator";
 import {responsiveNavigation} from "./responsive-navigation";
-import {validateWrapAround} from "@/helpers";
+import {validateWrapAround} from "./helpers";
 
 export function onLoad(el, options){
     let flkty = Flickity.data(el);

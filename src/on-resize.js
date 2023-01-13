@@ -1,5 +1,5 @@
 import {responsiveNavigation} from "./responsive-navigation";
-import {validateWrapAround} from "@/helpers";
+import {validateWrapAround} from "./helpers";
 
 export function onResize(el, options){
     let flkty = Flickity.data(el);

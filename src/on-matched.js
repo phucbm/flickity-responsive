@@ -1,6 +1,6 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
-import {validateWrapAround} from "@/helpers";
+import {validateWrapAround} from "./helpers";
 
 export function onMatched(el, options){
     // get instance

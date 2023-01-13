@@ -42,7 +42,7 @@ export function init(el, object, flickityOptions){
  * @param wrapper
  * @returns boolean
  */
-export function validateWrapAround(flickity, wrapper){
+export function validateWrapAround(flickity, wrapper = null){
     if(flickity){
         const totalCellWidth = flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0);
         return Math.round(flickity.size.width) > Math.round(totalCellWidth);
