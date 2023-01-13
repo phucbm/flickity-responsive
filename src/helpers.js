@@ -2,6 +2,7 @@ import {MatchMediaScreen} from "match-media-screen";
 import {onMatched} from "./on-matched";
 import {onResize} from "./on-resize";
 import {onLoad} from "./on-load";
+import {isjQueryElement} from "@/utils";
 
 /**
  * Init Flickity Responsive
@@ -35,14 +36,18 @@ export function init(el, object, flickityOptions){
 
 
 /**
- * Has wrap-around options
+ * Validate wrapAround option
+ * Compare value between the total item width and viewport width
  * @param flickity
  * @param wrapper
  * @returns boolean
  */
-export function hasWrapAround(flickity, wrapper){
-    if(flickity) return Math.round(flickity.size.width) > Math.round(flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0));
+export function validateWrapAround(flickity, wrapper){
+    if(flickity){
+        const totalCellWidth = flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0);
+        return Math.round(flickity.size.width) > Math.round(totalCellWidth);
+    }
 
-    const totalWidth = Math.round([...wrapper.children].reduce((acc, node) => acc + node.getBoundingClientRect().width, 0));
-    return Math.round(wrapper.getBoundingClientRect().width) > totalWidth;
+    const totalCellWidth = [...wrapper.children].reduce((acc, node) => acc + node.getBoundingClientRect().width, 0);
+    return Math.round(wrapper.getBoundingClientRect().width) > Math.round(totalCellWidth);
 }

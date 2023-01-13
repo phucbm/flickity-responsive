@@ -1,6 +1,6 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
-import {hasWrapAround} from "@/helpers";
+import {validateWrapAround} from "@/helpers";
 
 export function onMatched(el, options){
     // get instance
@@ -22,10 +22,10 @@ export function onMatched(el, options){
     if(options.wrapAround){
         if(!flkty){
             const wrapper = document.querySelector(el);
-            options.wrapAround = hasWrapAround(false, wrapper);
+            options.wrapAround = validateWrapAround(false, wrapper);
 
         }else{
-            options.wrapAround = hasWrapAround(flkty);
+            options.wrapAround = validateWrapAround(flkty);
         }
     }
 
