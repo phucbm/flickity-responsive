@@ -1,3 +1,7 @@
+### v2.0.3 - 2023-01-13
+
+- Validate wrapAround option
+
 ### v2.0.2 - 2022-11-18
 
 - Fix bug detect first/last slide to disable prev/next button.

@@ -1,5 +1,6 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
+import {validateWrapAround} from "./helpers";
 
 export function onMatched(el, options){
     // get instance
@@ -18,6 +19,16 @@ export function onMatched(el, options){
     /** Before Init **/
 
     /** Init **/
+    if(options.wrapAround){
+        if(!flkty){
+            const wrapper = document.querySelector(el);
+            options.wrapAround = validateWrapAround(false, wrapper);
+
+        }else{
+            options.wrapAround = validateWrapAround(flkty);
+        }
+    }
+
     // init new instance
     flkty = new Flickity(el, options);
 
