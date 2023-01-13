@@ -41,12 +41,7 @@ export function init(el, object, flickityOptions){
  * @param wrapper
  * @returns boolean
  */
-export function validateWrapAround(flickity, wrapper = null){
-    if(flickity){
-        const totalCellWidth = flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0);
-        return Math.round(flickity.size.width) > Math.round(totalCellWidth);
-    }
-
-    const totalCellWidth = [...wrapper.children].reduce((acc, node) => acc + node.getBoundingClientRect().width, 0);
-    return Math.round(wrapper.getBoundingClientRect().width) > Math.round(totalCellWidth);
+export function validateWrapAround(flickity){
+    const totalCellWidth = flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0);
+    return Math.round(flickity.size.width) > Math.round(totalCellWidth);
 }
