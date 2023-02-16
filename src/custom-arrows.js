@@ -1,4 +1,5 @@
 import {getElement} from "./utils";
+import {getPosition} from "@/helpers";
 
 /**
  * Init custom arrows
@@ -69,19 +70,30 @@ function getSlidePosition(flkty){
  * @param flkty
  * @param options
  */
-function updateCustomArrowsDisableStatus(flkty, options){
+export function updateCustomArrowsDisableStatus(flkty, options){
+    let begin = true, end = true, cellPosition = true;
+    if(options.autoAdjustPosition){
+        ({begin, end, cellPosition} = getPosition(flkty));
+    }
+    const slidePosition = getSlidePosition(flkty);
+
+    if(cellPosition < begin){
+        flkty.select(begin);
+    }
+    if(cellPosition > end){
+        flkty.select(end);
+    }
+
     // no disabled status if is wrapAround (infinite)
     if(options.isInfinite) return;
     const prevArrow = options.customArrows.prevArrow.el;
     const nextArrow = options.customArrows.nextArrow.el;
 
-    const slidePosition = getSlidePosition(flkty);
-
-    if(slidePosition === 0){
+    if(slidePosition === 0 || cellPosition === begin){
         // disable prev button
         prevArrow.setAttribute('disabled', 'disabled');
         nextArrow.removeAttribute('disabled');
-    }else if(slidePosition === 1){
+    }else if(slidePosition === 1 || cellPosition === end){
         // disable next prev button
         nextArrow.setAttribute('disabled', 'disabled');
         prevArrow.removeAttribute('disabled');

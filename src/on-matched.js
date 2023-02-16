@@ -1,6 +1,6 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
-import {validateWrapAround} from "./helpers";
+import {getPosition, validateWrapAround} from "./helpers";
 
 export function onMatched(el, options){
     // get instance
@@ -29,6 +29,12 @@ export function onMatched(el, options){
 
     /** After Init **/
     options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
+
+    if(flkty.options.autoAdjustPosition){
+        // select begin position
+        const {begin} = getPosition(flkty);
+        flkty.select(begin);
+    }
 
     // custom arrows
     initCustomArrows(flkty, options);
