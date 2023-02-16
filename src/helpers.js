@@ -48,28 +48,27 @@ export function validateWrapAround(flickity){
 
 
 /**
- * Get begin, end and cellSelected position
- * Compare value between the total item width and viewport width
+ * Get adjusted begin index, adjusted end index and selected cell index
  * @param flkty
  */
 export const getPosition = (flkty) => {
     let totalWidth = 0;
-    let count = 0;
+    let slidesToShow = 0;
     for(let i = 0; i < flkty.cells.length; i++){
         if(totalWidth + flkty.cells[i].size.width > flkty.size.width){
             break;
         }
         totalWidth += flkty.cells[i].size.width;
-        count++;
+        slidesToShow++;
     }
     const maxItems = flkty.cells.length;
-    const endPosition = maxItems - Math.floor(count / 2);
-    const beginPosition = Math.floor(count / 2) + 1;
-    const cellPosition = flkty.cells.findIndex(c => c.element.classList.contains('is-selected'));
+    const adjustedEndIndex = maxItems - Math.floor(slidesToShow / 2);
+    const adjustedBeginIndex = Math.floor(slidesToShow / 2) + 1;
+    const selectedCellIndex = flkty.cells.findIndex(c => c.element.classList.contains('is-selected'));
 
     return {
-        begin: beginPosition - 1,
-        end: endPosition - 1,
-        cellPosition
+        adjustedBeginIndex: adjustedBeginIndex - 1,
+        adjustedEndIndex: adjustedEndIndex - 1,
+        selectedCellIndex
     };
 };

@@ -32,8 +32,8 @@ export function onMatched(el, options){
 
     if(flkty.options.autoAdjustPosition){
         // select begin position
-        const {begin} = getPosition(flkty);
-        flkty.select(begin);
+        const {adjustedBeginIndex} = getPosition(flkty);
+        flkty.select(adjustedBeginIndex);
     }
 
     // custom arrows

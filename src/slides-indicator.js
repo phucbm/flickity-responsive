@@ -20,7 +20,8 @@ export function initSlidesIndicator(flkty, options){
 
         flkty.on('change', (index) => {
             if(options.autoAdjustPosition){
-                const {cellPosition} = getPosition(flkty);
+                const {selectedCellIndex} = getPosition(flkty);
+                index = selectedCellIndex;
                 updateCustomArrowsDisableStatus(flkty, options);
             }
             current.innerText = isZeroPad ? (index + 1).toString().padStart(2, '0') : index + 1;

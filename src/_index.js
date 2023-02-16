@@ -34,10 +34,10 @@ const defaultFlickityOptions = {
 export class FlickityResponsive{
     constructor(el, options){
         // confirm default flickity options
-        if(!(defaultFlickityOptions.autoAdjustPosition && options.groupCells === 1 && options.cellAlign === 'center')){
-            options.autoAdjustPosition = false;
-        }else{
+        if(defaultFlickityOptions.autoAdjustPosition && options.groupCells === 1 && options.cellAlign === 'center'){
             options.autoAdjustPosition = true;
+        }else{
+            options.autoAdjustPosition = false;
         }
 
         const isInit = init(el, options, defaultFlickityOptions);
