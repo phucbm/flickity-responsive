@@ -1,5 +1,5 @@
 import {getElement} from "./utils";
-import {getPosition} from "@/helpers";
+import {getPosition} from "./helpers";
 import {updateCustomArrowsDisableStatus} from "./custom-arrows";
 
 export function initSlidesIndicator(flkty, options){
