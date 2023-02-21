@@ -24,7 +24,10 @@ export function onMatched(el, options){
 
     // check the wrapAround
     if(options.wrapAround){
-        flkty.options.wrapAround = validateWrapAround(flkty);
+        const isWrapAround = validateWrapAround(flkty);
+        flkty.options.wrapAround = isWrapAround;
+        options.wrapAround = isWrapAround;
+        flkty.resize();
     }
 
     /** After Init **/
