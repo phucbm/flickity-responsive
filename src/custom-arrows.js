@@ -90,11 +90,11 @@ export function updateCustomArrowsDisableStatus(flkty, options){
 
     const slidePosition = getSlidePosition(flkty);
 
-    if(slidePosition === 0 || selectedCellIndex === adjustedBeginIndex){
+    if(slidePosition === 0 || (selectedCellIndex === adjustedBeginIndex && selectedCellIndex !== -1)){
         // disable prev button
         prevArrow.setAttribute('disabled', 'disabled');
         nextArrow.removeAttribute('disabled');
-    }else if(slidePosition === 1 || selectedCellIndex === adjustedEndIndex){
+    }else if(slidePosition === 1 || (selectedCellIndex === adjustedEndIndex && selectedCellIndex !== -1)){
         // disable next prev button
         nextArrow.setAttribute('disabled', 'disabled');
         prevArrow.removeAttribute('disabled');
