@@ -28,7 +28,7 @@ export function init(el, object, flickityOptions){
 
 
     // on load
-    onLoad(el, {...flickityOptions, object});
+    onLoad(el, {...flickityOptions, ...object});
 
     return true;
 }
@@ -38,7 +38,6 @@ export function init(el, object, flickityOptions){
  * Validate wrapAround option
  * Compare value between the total item width and viewport width
  * @param flickity
- * @param wrapper
  * @returns boolean
  */
 export function validateWrapAround(flickity){
