@@ -16,19 +16,28 @@ export function init(el, object, flickityOptions){
         return false;
     }
 
+    // merge options
+    const options = {...flickityOptions, ...object};
+
+    // confirm default flickity options
+    const allowAdjustPosition = options.groupCells === 1 && options.cellAlign === 'center' && !options.pageDots;
+    options.autoAdjustPosition = options.autoAdjustPosition && allowAdjustPosition;
+
+
+    // init match media
     new MatchMediaScreen({
         object,
 
         // breakpoint found
-        onMatched: data => onMatched(el, {...flickityOptions, ...data.object}),
+        onMatched: data => onMatched(el, {...options, ...data.object}),
 
         // window resize with debounce
-        onUpdate: data => onResize(el, {...flickityOptions, ...data.object})
+        onUpdate: data => onResize(el, {...options, ...data.object})
     });
 
 
     // on load
-    onLoad(el, {...flickityOptions, ...object});
+    onLoad(el, options);
 
     return true;
 }
@@ -71,3 +80,19 @@ export const getPosition = (flkty) => {
         selectedCellIndex
     };
 };
+
+
+/**
+ * Get slide position
+ * return 0 - first slide
+ * return 1 - last index
+ * return -1 - not first/last position
+ * @param flkty
+ * @return number
+ */
+export function getSlidePosition(flkty){
+    const {selectedIndex, slides} = flkty;
+    if(selectedIndex === 0) return 0;
+    if(selectedIndex === slides.length - 1) return 1;
+    return -1;
+}

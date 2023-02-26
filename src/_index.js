@@ -19,7 +19,7 @@ const defaultFlickityOptions = {
     indicatorTotal: undefined,
 
     // avoid arrow bug
-    autoAdjustPosition: true,
+    autoAdjustPosition: true, // only work if: cellAlign=center, no pageDots, groupCells=1
 
     _class: {
         buttonFreeze: 'flickity-button-freeze'
@@ -33,10 +33,6 @@ const defaultFlickityOptions = {
  */
 export class FlickityResponsive{
     constructor(el, options){
-        // confirm default flickity options
-        const allowAdjustPosition = options.groupCells === 1 && options.cellAlign === 'center' && !options.pageDots;
-        options.autoAdjustPosition = defaultFlickityOptions.autoAdjustPosition && allowAdjustPosition;
-
         const isInit = init(el, options, defaultFlickityOptions);
         if(!isInit) return undefined;
 

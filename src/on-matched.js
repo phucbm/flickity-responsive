@@ -17,18 +17,16 @@ export function onMatched(el, options){
     }
 
     /** Before Init **/
-
-    /** Init **/
-    // init new instance
-    flkty = new Flickity(el, options);
-
     // check the wrapAround
     if(options.wrapAround){
         const isWrapAround = validateWrapAround(flkty);
         flkty.options.wrapAround = isWrapAround;
         options.wrapAround = isWrapAround;
-        flkty.resize();
     }
+
+    /** Init **/
+    // init new instance
+    flkty = new Flickity(el, options);
 
     /** After Init **/
     options.isInfinite = options.hasOwnProperty('wrapAround') && flkty.options.wrapAround;

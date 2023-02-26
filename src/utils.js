@@ -77,3 +77,7 @@ export function getJSONObjectFromString(string){
 export function getElement(el){
     return isjQueryElement(el) ? el.get()[0] : el;
 }
+
+export function getNumber(number = 0){
+    return number.toString().padStart(2, '0');
+}

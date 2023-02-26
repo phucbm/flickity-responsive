@@ -1,9 +1,10 @@
+import {isjQueryElement} from "./utils";
+
 /**
  * Hide navigation elements if the slider is not slide-able
  * @param flkty
  * @param options
  */
-import {isjQueryElement} from "@/utils";
 
 export function responsiveNavigation(flkty, options){
     if(options.responsiveNavigation !== true) return;
@@ -22,6 +23,7 @@ export function responsiveNavigation(flkty, options){
         options.customArrows ? options.customArrows.nextArrow.el : undefined
     ];
 
+    // check if number of cells are stay within slider viewport
     const isSlideable = flkty.slideableWidth > flkty.size.innerWidth;
 
     elements.forEach(el => {

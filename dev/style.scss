@@ -1,5 +1,5 @@
 .carousel-cell {
-  width: 33.33%;
+  width: calc(33.33% - 20px / 3);
   height: 200px;
   margin-right: 10px;
   background: #8C8;

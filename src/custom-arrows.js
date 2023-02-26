@@ -1,5 +1,5 @@
 import {getElement} from "./utils";
-import {getPosition} from "./helpers";
+import {getPosition, getSlidePosition} from "./helpers";
 
 /**
  * Init custom arrows
@@ -51,43 +51,32 @@ export function initCustomArrows(flkty, options){
 }
 
 /**
- * Get slide position
- * return 0 - first slide
- * return 1 - last index
- * return -1 - not first/last position
- * @param flkty
- * @return number
- */
-function getSlidePosition(flkty){
-    const {selectedIndex, slides} = flkty;
-    if(selectedIndex === 0) return 0;
-    if(selectedIndex === slides.length - 1) return 1;
-    return -1;
-}
-
-/**
  * Update disable status
  * @param flkty
  * @param options
  */
 export function updateCustomArrowsDisableStatus(flkty, options){
-    let adjustedBeginIndex = -1, adjustedEndIndex = -1, selectedCellIndex = -1;
-    if(options.autoAdjustPosition){
-        ({adjustedBeginIndex, adjustedEndIndex, selectedCellIndex} = getPosition(flkty));
-    }
-
-    if(selectedCellIndex < adjustedBeginIndex){
-        flkty.select(adjustedBeginIndex);
-    }
-    if(selectedCellIndex > adjustedEndIndex){
-        flkty.select(adjustedEndIndex);
-    }
-
     // no disabled status if is wrapAround (infinite)
     if(options.isInfinite) return;
+
+    // find new slide index to adjust active slide position
+    // use unusual values as initial values
+    let adjustedBeginIndex = -1, adjustedEndIndex = -2, selectedCellIndex = -3;
+    if(options.autoAdjustPosition){
+        ({adjustedBeginIndex, adjustedEndIndex, selectedCellIndex} = getPosition(flkty));
+
+        // move to new active slide
+        if(selectedCellIndex < adjustedBeginIndex){
+            flkty.select(adjustedBeginIndex);
+        }
+        if(selectedCellIndex > adjustedEndIndex){
+            flkty.select(adjustedEndIndex);
+        }
+    }
+
+
     const prevArrow = options.customArrows.prevArrow.el;
     const nextArrow = options.customArrows.nextArrow.el;
-
     const slidePosition = getSlidePosition(flkty);
 
     if(slidePosition === 0 || selectedCellIndex === adjustedBeginIndex){

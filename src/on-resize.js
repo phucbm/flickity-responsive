@@ -10,7 +10,9 @@ export function onResize(el, options){
 
     // check the wrapAround
     if(options.wrapAround){
-        flkty.options.wrapAround = validateWrapAround(flkty);
+        const isWrapAround = validateWrapAround(flkty);
+        flkty.options.wrapAround = isWrapAround;
+        options.wrapAround = isWrapAround;
     }
 
     if(flkty.options.autoAdjustPosition){
