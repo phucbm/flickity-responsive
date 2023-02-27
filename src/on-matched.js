@@ -1,6 +1,7 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
-import {getPosition, validateWrapAround} from "./helpers";
+import {validateWrapAround} from "./helpers";
+import {isValidAutoAdjustSlidePosition, updateSlidePosition} from "./auto-adjust-slide-position";
 
 export function onMatched(el, options){
     // get instance
@@ -17,6 +18,9 @@ export function onMatched(el, options){
     }
 
     /** Before Init **/
+    // confirm default flickity options
+    options.autoAdjustPosition = isValidAutoAdjustSlidePosition(options);
+
     // check the wrapAround
     if(options.wrapAround){
         const isWrapAround = validateWrapAround(flkty);
@@ -31,11 +35,8 @@ export function onMatched(el, options){
     /** After Init **/
     options.isInfinite = options.hasOwnProperty('wrapAround') && flkty.options.wrapAround;
 
-    if(flkty.options.autoAdjustPosition){
-        // select begin position
-        const {adjustedBeginIndex} = getPosition(flkty);
-        flkty.select(adjustedBeginIndex);
-    }
+    // slide position
+    updateSlidePosition(flkty);
 
     // custom arrows
     initCustomArrows(flkty, options);

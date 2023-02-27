@@ -1,5 +1,6 @@
 import {getElement} from "./utils";
-import {getPosition, getSlidePosition} from "./helpers";
+import {getSelectedSlidePosition} from "./helpers";
+import {getAdjustedSlidePosition} from "./auto-adjust-slide-position";
 
 /**
  * Init custom arrows
@@ -63,7 +64,7 @@ export function updateCustomArrowsDisableStatus(flkty, options){
     // use unusual values as initial values
     let adjustedBeginIndex = -1, adjustedEndIndex = -2, selectedCellIndex = -3;
     if(options.autoAdjustPosition){
-        ({adjustedBeginIndex, adjustedEndIndex, selectedCellIndex} = getPosition(flkty));
+        ({adjustedBeginIndex, adjustedEndIndex, selectedCellIndex} = getAdjustedSlidePosition(flkty));
 
         // move to new active slide
         if(selectedCellIndex < adjustedBeginIndex){
@@ -77,7 +78,7 @@ export function updateCustomArrowsDisableStatus(flkty, options){
 
     const prevArrow = options.customArrows.prevArrow.el;
     const nextArrow = options.customArrows.nextArrow.el;
-    const slidePosition = getSlidePosition(flkty);
+    const slidePosition = getSelectedSlidePosition(flkty);
 
     if(slidePosition === 0 || selectedCellIndex === adjustedBeginIndex){
         // disable prev button

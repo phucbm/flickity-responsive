@@ -19,11 +19,6 @@ export function init(el, object, flickityOptions){
     // merge options
     const options = {...flickityOptions, ...object};
 
-    // confirm default flickity options
-    const allowAdjustPosition = options.groupCells === 1 && options.cellAlign === 'center' && !options.pageDots;
-    options.autoAdjustPosition = options.autoAdjustPosition && allowAdjustPosition;
-
-
     // init match media
     new MatchMediaScreen({
         object,
@@ -56,33 +51,6 @@ export function validateWrapAround(flickity){
 
 
 /**
- * Get adjusted begin index, adjusted end index and selected cell index
- * @param flkty
- */
-export const getPosition = (flkty) => {
-    let totalWidth = 0;
-    let slidesToShow = 0;
-    for(let i = 0; i < flkty.cells.length; i++){
-        if(totalWidth + flkty.cells[i].size.width > flkty.size.width){
-            break;
-        }
-        totalWidth += flkty.cells[i].size.width;
-        slidesToShow++;
-    }
-    const maxItems = flkty.cells.length;
-    const adjustedEndIndex = maxItems - Math.floor(slidesToShow / 2);
-    const adjustedBeginIndex = Math.floor(slidesToShow / 2) + 1;
-    const selectedCellIndex = flkty.cells.findIndex(c => c.element.classList.contains('is-selected'));
-
-    return {
-        adjustedBeginIndex: adjustedBeginIndex - 1,
-        adjustedEndIndex: adjustedEndIndex - 1,
-        selectedCellIndex
-    };
-};
-
-
-/**
  * Get slide position
  * return 0 - first slide
  * return 1 - last index
@@ -90,7 +58,7 @@ export const getPosition = (flkty) => {
  * @param flkty
  * @return number
  */
-export function getSlidePosition(flkty){
+export function getSelectedSlidePosition(flkty){
     const {selectedIndex, slides} = flkty;
     if(selectedIndex === 0) return 0;
     if(selectedIndex === slides.length - 1) return 1;

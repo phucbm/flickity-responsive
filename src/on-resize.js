@@ -1,5 +1,6 @@
 import {responsiveNavigation} from "./responsive-navigation";
-import {getPosition, validateWrapAround} from "./helpers";
+import {validateWrapAround} from "./helpers";
+import {updateSlidePosition} from "./auto-adjust-slide-position";
 
 export function onResize(el, options){
     let flkty = Flickity.data(el);
@@ -15,9 +16,6 @@ export function onResize(el, options){
         options.wrapAround = isWrapAround;
     }
 
-    if(flkty.options.autoAdjustPosition){
-        // select begin position
-        const {adjustedBeginIndex} = getPosition(flkty);
-        flkty.select(adjustedBeginIndex);
-    }
+    // slide position
+    updateSlidePosition(flkty);
 }
