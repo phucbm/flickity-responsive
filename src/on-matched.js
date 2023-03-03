@@ -28,7 +28,7 @@ export function onMatched(el, options){
     }
 
     /** After Init **/
-    options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
+    options.isInfinite = options.hasOwnProperty('wrapAround') && flkty.options.wrapAround;
 
     // custom arrows
     initCustomArrows(flkty, options);
