@@ -45,3 +45,13 @@ export function validateWrapAround(flickity){
     const totalCellWidth = flickity.cells.reduce((acc, cell) => acc + cell.size.width, 0);
     return Math.round(flickity.size.width) > Math.round(totalCellWidth);
 }
+
+
+/**
+ * Get selected slide index
+ * @param flickity
+ * @returns {*}
+ */
+export function getSelectedSlideIndex(flickity){
+    return flickity.slides.findIndex(x => x.x === flickity.selectedSlide.x);
+}
