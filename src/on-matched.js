@@ -1,6 +1,7 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
 import {validateWrapAround} from "./helpers";
+import {initForceMove} from "@/force-move";
 
 export function onMatched(el, options){
     // get instance
@@ -35,6 +36,9 @@ export function onMatched(el, options){
 
     // slides indicator
     initSlidesIndicator(flkty, options);
+
+    // one item per slide
+    initForceMove(flkty, options);
 
     // resize
     flkty.resize();

@@ -3,7 +3,7 @@
  * some first and last items have delay while the carousel is stand still.
  * This option will make sure that every time an arrows click, the carousel will move.
  */
-export function initOnePerSlide(flkty, options){
+export function initForceMove(flkty, options){
     let currentSlide = flkty.selectedSlide;
 
     flkty.on('change', () => {
@@ -12,39 +12,28 @@ export function initOnePerSlide(flkty, options){
         // get slide status
         const slideStatus = getSlideStatus(currentSlide, nextSlide);
 
+        // nothing change
         if(slideStatus === 0) return;
 
-        // forward
-        let result;
-        if(slideStatus === 1){
-            result = getTheSameLastItem(flkty.slides, nextSlide);
-
-            // current slide is the same target as next slide => return the next index
-            if(nextSlide.target === currentSlide.target){
-                result += 1;
-            }
-        }else{
-            result = getTheSameLastItem(flkty.slides, nextSlide, false);
-
-            // current slide is the same target as next slide => return the previous index
-            if(nextSlide.target === currentSlide.target){
-                result -= 1;
-            }
+        // get new slide index
+        let newIndex = getSlideIndex(flkty.slides, nextSlide, slideStatus === 1);
+        if(nextSlide.target === currentSlide.target){
+            newIndex += slideStatus;
         }
 
         // update current slide
         currentSlide = flkty.selectedSlide;
 
         // select the new index
-        flkty.select(result);
+        flkty.select(newIndex);
     });
 }
 
 
 /**
- * Get the same last item
+ * Get the index of the last slide that has the same target (slide's position, defined by Flickity)
  * */
-const getTheSameLastItem = (slides, slide, isForward = true) => {
+const getSlideIndex = (slides, slide, isForward = true) => {
     if(isForward) return slides.findLastIndex(s => s.target === slide.target);
     return slides.findIndex(s => s.target === slide.target);
 };

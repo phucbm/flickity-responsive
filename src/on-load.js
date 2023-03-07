@@ -1,7 +1,7 @@
 import {initSlidesIndicator} from "./slides-indicator";
 import {responsiveNavigation} from "./responsive-navigation";
 import {validateWrapAround} from "./helpers";
-import {initOnePerSlide} from "@/one-per-slide";
+import {initForceMove} from "./force-move";
 
 export function onLoad(el, options){
     let flkty = Flickity.data(el);
@@ -18,5 +18,5 @@ export function onLoad(el, options){
     initSlidesIndicator(flkty, options);
 
     // one item per slide
-    initOnePerSlide(flkty, options);
+    initForceMove(flkty, options);
 }

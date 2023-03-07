@@ -18,6 +18,9 @@ const defaultFlickityOptions = {
     indicatorCurrent: undefined,
     indicatorTotal: undefined,
 
+    // extra features
+    forceMove: true,
+
     _class: {
         buttonFreeze: 'flickity-button-freeze'
     }
