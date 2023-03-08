@@ -18,11 +18,12 @@ const defaultFlickityOptions = {
     indicatorCurrent: undefined,
     indicatorTotal: undefined,
 
-    // avoid arrow bug
-    autoAdjustPosition: true,
+    // extra features
+    forceMove: true,
 
     _class: {
-        buttonFreeze: 'flickity-button-freeze'
+        buttonFreeze: 'flickity-button-freeze',
+        isForceMove: 'is-force-move',
     }
 };
 
@@ -33,10 +34,6 @@ const defaultFlickityOptions = {
  */
 export class FlickityResponsive{
     constructor(el, options){
-        // confirm default flickity options
-        const allowAdjustPosition = options.groupCells === 1 && options.cellAlign === 'center' && !options.pageDots;
-        options.autoAdjustPosition = defaultFlickityOptions.autoAdjustPosition && allowAdjustPosition;
-
         const isInit = init(el, options, defaultFlickityOptions);
         if(!isInit) return undefined;
 

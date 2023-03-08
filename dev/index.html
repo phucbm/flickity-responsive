@@ -27,13 +27,25 @@
 
     <div class="mb100 pt100">
         <h1 data-title>Flickity Responsive</h1>
+        <p>
+            <a href="https://github.com/phucbm/flickity-responsive/releases/latest" target="_blank">
+                <img src="https://badgen.net/github/release/phucbm/flickity-responsive" alt="release">
+            </a>
+            <a href="https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive" target="_blank">
+                <img src="https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded"
+                     alt="jsdeliver hit">
+            </a>
+            <a href="https://www.npmjs.com/package/flickity-responsive" target="_blank">
+                <img src="https://badgen.net/npm/dm/flickity-responsive" alt="npm download">
+            </a>
+        </p>
         <p data-description></p>
     </div>
 
 
     <section class="mb100">
         <h2>Init with vanilla JS</h2>
-        <p>Show dots on screen smaller than 768px</p>
+        <p>On screen <= 768px, show page dots and hide arrows.</p>
         <!-- Flickity HTML init -->
         <div class="carousel">
             <div class="carousel-cell"></div>
@@ -45,12 +57,26 @@
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
         </div>
+        <pre>
+// init with vanilla JS
+const carousel = new FlickityResponsive('.carousel', {
+    pageDots: false,
+    responsive: [
+        {
+            breakpoint: 768,
+            settings: {
+                prevNextButtons: false,
+                pageDots: true,
+            }
+        }
+    ]
+});</pre>
     </section>
 
 
     <section class="mb100">
         <h2>Init with jQuery</h2>
-        <p>Destroy on screen smaller than 768px</p>
+        <p>On screen <= 768px, destroy carousel.</p>
         <!-- Flickity HTML init -->
         <div class="carousel-2">
             <div class="carousel-cell"></div>
@@ -59,6 +85,17 @@
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
         </div>
+        <pre>
+jQuery('.carousel-2').flickityResponsive({
+    responsive: [
+        {
+            breakpoint: 768,
+            settings: {
+                destroy: true
+            }
+        }
+    ]
+});</pre>
     </section>
 
 
@@ -69,19 +106,70 @@
             <div class="carousel-cell" style="width:260px;"></div>
             <div class="carousel-cell" style="width:260px;"></div>
         </div>
+        <pre>data-flickity-responsive='{ "cellAlign": "left" }'</pre>
     </section>
 
 
     <section class="mb100">
+        <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
         <div class="d-flex jc-space-between ai-center">
-            <h2>Custom arrows</h2>
+            <h2>Custom arrows and indicator numbers</h2>
             <div class="d-flex ai-center" style="gap:10px;">
                 <button id="prev">Prev</button>
                 <div><span id="current">0</span>/<span id="total">0</span></div>
                 <button id="next">Next</button>
             </div>
         </div>
+        <p>Use <code>prevArrow</code> and <code>nextArrow</code> to assign custom prev/next buttons.</p>
+        <p>Use <code>indicatorCurrent</code> and <code>indicatorTotal</code> to receive update about slide's position.
+        </p>
         <div class="carousel-arrows">
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+        </div>
+        <pre>
+// custom arrows
+const carouselArrows = new FlickityResponsive('.carousel-arrows', {
+    prevNextButtons: false,
+    indicatorCurrent: document.querySelector('#current'),
+    indicatorTotal: document.querySelector('#total'),
+    prevArrow: document.querySelector('#prev'),
+    nextArrow: jQuery('#next'),
+    cellAlign: 'center',
+    contain: true
+});</pre>
+    </section>
+
+    <section class="mb100">
+        <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
+        <div>
+            <h2>Force move</h2>
+            <p>Enabled by default <code>forceMove:true</code>. This extra option will make sure that the carousel will
+                move
+                on every arrow click.</p>
+        </div>
+        <div data-flickity-responsive='{ "cellAlign": "left" }' class="mb50">
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+        </div>
+        <p>Use <code>forceMove:false</code> if you prefer the normal behaviour of the carousel.</p>
+        <div data-flickity-responsive='{ "forceMove": "false" }'>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
+            <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>
             <div class="carousel-cell"></div>

@@ -1,6 +1,7 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
-import {getPosition, validateWrapAround} from "./helpers";
+import {validateWrapAround} from "./helpers";
+import {initForceMove} from "./force-move";
 
 export function onMatched(el, options){
     // get instance
@@ -28,19 +29,16 @@ export function onMatched(el, options){
     }
 
     /** After Init **/
-    options.isInfinite = options.hasOwnProperty('wrapAround') && options.wrapAround;
-
-    if(flkty.options.autoAdjustPosition){
-        // select begin position
-        const {adjustedBeginIndex} = getPosition(flkty);
-        flkty.select(adjustedBeginIndex);
-    }
+    options.isInfinite = options.hasOwnProperty('wrapAround') && flkty.options.wrapAround;
 
     // custom arrows
     initCustomArrows(flkty, options);
 
     // slides indicator
     initSlidesIndicator(flkty, options);
+
+    // one item per slide
+    initForceMove(flkty, options);
 
     // resize
     flkty.resize();

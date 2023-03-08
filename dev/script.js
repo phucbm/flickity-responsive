@@ -57,4 +57,6 @@ const carouselArrows = new FlickityResponsive('.carousel-arrows', {
     indicatorTotal: document.querySelector('#total'),
     prevArrow: document.querySelector('#prev'),
     nextArrow: jQuery('#next'),
+    cellAlign: 'center',
+    contain: true
 });
