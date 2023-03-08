@@ -157,3 +157,5 @@ npm run build
 [MIT License](https://github.com/phucbm/flickity-responsive/blob/master/LICENSE)
 
 Copyright (c) 2023 Phuc Bui
+
+> Please leave a star ⭐️ to support my work. Thank you!
