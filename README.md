@@ -60,9 +60,6 @@ import {FlickityResponsive} from "flickity-responsive";
 
 Just change the name, all other options stay the same.
 
-- `new Flickity()` => `new FlickityResponsive()`.
-- `$('.carousel').flickity()` => `$('.carousel').flickityResponsive()`.
-
 ```js
 // init with vanilla JS
 const carousel = new FlickityResponsive('.carousel', {
@@ -73,18 +70,6 @@ const carousel = new FlickityResponsive('.carousel', {
             settings: {
                 prevNextButtons: false,
                 pageDots: true,
-            }
-        }
-    ]
-});
-
-// init with jQuery
-$('.carousel').flickityResponsive({
-    responsive: [
-        {
-            breakpoint: 768,
-            settings: {
-                destroy: true
             }
         }
     ]
