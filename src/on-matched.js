@@ -1,7 +1,7 @@
 import {initCustomArrows} from "./custom-arrows";
 import {initSlidesIndicator} from "./slides-indicator";
 import {validateWrapAround} from "./helpers";
-import {initForceMove} from "@/force-move";
+import {initForceMove} from "./force-move";
 
 export function onMatched(el, options){
     // get instance
