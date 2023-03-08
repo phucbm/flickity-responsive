@@ -22,7 +22,8 @@ const defaultFlickityOptions = {
     forceMove: true,
 
     _class: {
-        buttonFreeze: 'flickity-button-freeze'
+        buttonFreeze: 'flickity-button-freeze',
+        isForceMove: 'is-force-move',
     }
 };
 
