@@ -5,6 +5,7 @@
 [![jsdelivr](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 [![npm weekly download](https://badgen.net/npm/dm/flickity-responsive)](https://www.npmjs.com/package/flickity-responsive)
 [![license](https://badgen.net/github/license/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9f75e2e8-1ebf-4aa7-83f0-c4fb4942df2e/deploy-status)](https://app.netlify.com/sites/flickity/deploys)
 
 > A vanilla JS plugin that adds `responsive` option for Flickity. And more extendable settings, see [#docs](#docs)
 
@@ -60,9 +61,6 @@ import {FlickityResponsive} from "flickity-responsive";
 
 Just change the name, all other options stay the same.
 
-- `new Flickity()` => `new FlickityResponsive()`.
-- `$('.carousel').flickity()` => `$('.carousel').flickityResponsive()`.
-
 ```js
 // init with vanilla JS
 const carousel = new FlickityResponsive('.carousel', {
@@ -73,18 +71,6 @@ const carousel = new FlickityResponsive('.carousel', {
             settings: {
                 prevNextButtons: false,
                 pageDots: true,
-            }
-        }
-    ]
-});
-
-// init with jQuery
-$('.carousel').flickityResponsive({
-    responsive: [
-        {
-            breakpoint: 768,
-            settings: {
-                destroy: true
             }
         }
     ]
@@ -108,20 +94,35 @@ Use data attribute to init Flickity Responsive, just exactly like Flickity.
 
 ## Docs
 
+Visit https://flickity.netlify.app for examples.
+
 ```js
 const carousel = new FlickityResponsive('.carousel', {
     contain: true, // default in Flickity Responsive
 
-    // Extended options
-    destroy: false, // destroy flickity
+    // Extra features 👇
+
+    // destroy
+    destroy: false,
+
+    // custom arrows
     prevArrow: undefined, // DOM element, jQuery element
     nextArrow: undefined, // DOM element, jQuery element
-    responsiveNavigation: true, // Hide navigation elements if the slider is not slide-able
+
+    // indicator numbers
+    indicatorCurrent: undefined, // DOM element, jQuery element
+    indicatorTotal: undefined, // DOM element, jQuery element
+
+    // hide navigation elements if the slider is not slide-able
+    responsiveNavigation: true,
 
     // indicator
     indicatorZeroPad: false,
     indicatorCurrent: undefined,
     indicatorTotal: undefined,
+
+    // force move
+    forceMove: true, // make sure that every time an arrows clicked, the carousel will move
 });
 ```
 
@@ -136,34 +137,26 @@ carousel.
 
 ## Deployment
 
-### Dev server
-
-Run dev server
+Before release, update version in `package.json` and `README.md`.
 
 ```shell
+# Run dev server
 npm run dev
-```
 
-### Generate production files
-
-Before generate UMD and module version:
-
-1. Update version in `package.json`
-2. Update version in `README.md`
-
-```shell
 # Generate prod files
 npm run prod
 
 # Publish package
 npm publish
-```
 
-### Build sites
-
-Build production site
-
-```shell
 # Netlify build
 npm run build
 ```
+
+## License
+
+[MIT License](https://github.com/phucbm/flickity-responsive/blob/master/LICENSE)
+
+Copyright (c) 2023 Phuc Bui
+
+> Please leave a star ⭐️ to support my work. Thank you!
