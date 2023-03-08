@@ -4,6 +4,9 @@
  * This option will make sure that every time an arrows click, the carousel will move.
  */
 export function initForceMove(flkty, options){
+    if(options.forceMove !== true) return;
+    flkty.element.classList.add(options._class.isForceMove);
+
     let currentSlide = flkty.selectedSlide;
 
     flkty.on('change', () => {
