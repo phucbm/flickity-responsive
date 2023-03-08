@@ -108,17 +108,27 @@ Use data attribute to init Flickity Responsive, just exactly like Flickity.
 
 ## Docs
 
+Visit https://flickity.netlify.app for examples.
+
 ```js
 const carousel = new FlickityResponsive('.carousel', {
     contain: true, // default in Flickity Responsive
 
-    // Extra features
+    // Extra features 👇
 
-    // Extended options
-    destroy: false, // destroy flickity
+    // destroy
+    destroy: false,
+
+    // custom arrows
     prevArrow: undefined, // DOM element, jQuery element
     nextArrow: undefined, // DOM element, jQuery element
-    responsiveNavigation: true, // hide navigation elements if the slider is not slide-able
+
+    // indicator numbers
+    indicatorCurrent: undefined, // DOM element, jQuery element
+    indicatorTotal: undefined, // DOM element, jQuery element
+
+    // hide navigation elements if the slider is not slide-able
+    responsiveNavigation: true,
 
     // indicator
     indicatorZeroPad: false,
