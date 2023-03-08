@@ -17,10 +17,61 @@
   color: white;
 }
 
+/* page dots */
+body .flickity-page-dots {
+  position: relative;
+  bottom: auto;
+  margin-top: 10px;
+}
+
 .mb100 {
   margin-bottom: 100px;
 }
 
+.mb50 {
+  margin-bottom: 50px;
+}
+
 .pt100 {
   padding-top: 100px;
+}
+
+.pt50 {
+  padding-top: 50px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* code */
+code {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+  padding: 2px 3px;
+  line-height: 1.2;
+  border-radius: 3px;
+}
+
+/* code block */
+pre {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+/* extra feature */
+.extra-feature {
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px solid cornflowerblue;
+  background: rgba(100, 149, 237, 0.05);
+  box-shadow: 2px 2px 0 0 rgba(100, 149, 237, 1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  display: inline-block;
+  transform: translate(0, -.2em);
+  margin-left: .1em;
 }
