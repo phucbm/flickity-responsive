@@ -28,7 +28,7 @@ export function init(el, object, flickityOptions){
 
 
     // on load
-    onLoad(el, {...flickityOptions, object});
+    onLoad(el, {...flickityOptions, ...object});
 
     return true;
 }
