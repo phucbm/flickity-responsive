@@ -16,19 +16,21 @@ export function init(el, object, flickityOptions){
         return false;
     }
 
+    const options = {...flickityOptions, ...object};
+
     new MatchMediaScreen({
         object,
 
         // breakpoint found
-        onMatched: data => onMatched(el, {...flickityOptions, ...data.object}),
+        onMatched: () => onMatched(el, options),
 
         // window resize with debounce
-        onUpdate: data => onResize(el, {...flickityOptions, ...data.object})
+        onUpdate: () => onResize(el, options)
     });
 
 
     // on load
-    onLoad(el, {...flickityOptions, ...object});
+    onLoad(el, options);
 
     return true;
 }
