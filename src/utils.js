@@ -77,3 +77,17 @@ export function getJSONObjectFromString(string){
 export function getElement(el){
     return isjQueryElement(el) ? el.get()[0] : el;
 }
+
+
+/**
+ * Merge object withou change object memory address
+ * @param rootObject
+ * @param subObject
+ * @returns {object}
+ */
+export function mergeObject(rootObject, subObject){
+    for(const [key, value] of Object.entries(subObject)){
+        rootObject[key] = value;
+    }
+    return rootObject;
+}
