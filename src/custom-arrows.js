@@ -40,7 +40,7 @@ export function initCustomArrows(flkty, options){
     });
 
     // save custom arrows
-    options.customArrows = customArrows;
+    flkty.options.customArrows = customArrows;
 
     // update disable status
     if(hasCustomArrow){
@@ -72,8 +72,8 @@ function getSlidePosition(flkty){
 export function updateCustomArrowsDisableStatus(flkty, options){
     // no disabled status if is wrapAround (infinite)
     if(options.isInfinite) return;
-    const prevArrow = options.customArrows.prevArrow.el;
-    const nextArrow = options.customArrows.nextArrow.el;
+    const prevArrow = flkty.options.customArrows.prevArrow.el;
+    const nextArrow = flkty.options.customArrows.nextArrow.el;
 
     const slidePosition = getSlidePosition(flkty);
 

@@ -10,8 +10,8 @@ export function responsiveNavigation(flkty, options){
         flkty.pageDots ? flkty.pageDots.holder : undefined,
         flkty.prevButton ? flkty.prevButton.element : undefined,
         flkty.nextButton ? flkty.nextButton.element : undefined,
-        options.customArrows ? options.customArrows.prevArrow.el : undefined,
-        options.customArrows ? options.customArrows.nextArrow.el : undefined
+        flkty.options.customArrows ? flkty.options.customArrows.prevArrow.el : undefined,
+        flkty.options.customArrows ? flkty.options.customArrows.nextArrow.el : undefined
     ];
 
     const isSlideable = flkty.slideableWidth > flkty.size.innerWidth;
