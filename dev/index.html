@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Flickity Responsive</title>
 
@@ -19,7 +19,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.css"
       integrity="sha512-TZTUnuHs1njGko8PJqZlHzqZTZd880A+BvhR1jy1v4mWB4VFKVLG/eK9LYdDjxqNLmttSC1ygmqg6rkYjnEgaQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 <div class="container">
@@ -98,6 +98,29 @@ jQuery('.carousel-2').flickityResponsive({
 });</pre>
     </section>
 
+    <section class="mb100">
+        <div>
+            <h2>Init with HTML (with attributes for custom arrow)</h2>
+            <div class="d-flex jc-space-between ai-center">
+                <h2>Custom arrows with attribute</h2>
+                <div class="d-flex ai-center" style="gap:10px;">
+                    <button data-flickity-responsive-prev-arrow>Prev</button>
+                    <button data-flickity-responsive-next-arrow>Next</button>
+                </div>
+            </div>
+            <div data-flickity-responsive='{ "cellAlign": "center" }'>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+                <div class="carousel-cell" style="width:260px;"></div>
+            </div>
+            <pre>data-flickity-responsive='{ "cellAlign": "center" }'<br>Use attribute `data-flickity-responsive-prev-arrow` for custom previous button.<br>Use attribute `data-flickity-responsive-next-arrow` for custom next button.</pre>
+        </div>
+    </section>
 
     <section class="mb100">
         <h2>Init with HTML</h2>
@@ -108,7 +131,6 @@ jQuery('.carousel-2').flickityResponsive({
         </div>
         <pre>data-flickity-responsive='{ "cellAlign": "left" }'</pre>
     </section>
-
 
     <section class="mb100">
         <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
