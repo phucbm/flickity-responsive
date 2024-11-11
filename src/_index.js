@@ -62,7 +62,13 @@ if(typeof jQuery !== 'undefined'){
  */
 document.querySelectorAll(`[${_attr.init}]`).forEach(el => {
     const options = getJSONObjectFromString(el.getAttribute(_attr.init));
-    new FlickityResponsive(el, options);
+    const wrapper = el.closest('div:has([data-flickity-responsive-prev-arrow])');
+
+    new FlickityResponsive(el, {
+        ...options,
+        prevArrow: wrapper ? wrapper.querySelector('[data-flickity-responsive-prev-arrow]') : undefined,
+        nextArrow: wrapper ? wrapper.querySelector('[data-flickity-responsive-next-arrow]') : undefined,
+    });
 });
 
 
