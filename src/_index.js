@@ -64,18 +64,10 @@ document.querySelectorAll(`[${_attr.init}]`).forEach(el => {
     const options = getJSONObjectFromString(el.getAttribute(_attr.init));
     const wrapper = el.closest('div:has([data-flickity-responsive-prev-arrow])');
 
-    // get custom arrows
-    let arrowPrev = undefined;
-    let arrowNext = undefined;
-
-    if (wrapper) {
-        arrowPrev = wrapper.querySelector('[data-flickity-responsive-prev-arrow]');
-        arrowNext = wrapper.querySelector('[data-flickity-responsive-next-arrow]');
-    }
     new FlickityResponsive(el, {
         ...options,
-        prevArrow: arrowPrev,
-        nextArrow: arrowNext,
+        prevArrow: wrapper ? wrapper.querySelector('[data-flickity-responsive-prev-arrow]') : undefined,
+        nextArrow: wrapper ? wrapper.querySelector('[data-flickity-responsive-next-arrow]') : undefined,
     });
 });
 
