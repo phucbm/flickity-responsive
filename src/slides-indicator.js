@@ -4,7 +4,7 @@ export function initSlidesIndicator(flkty, options){
     const isZeroPad = options.indicatorZeroPad === true;
     const total = getElement(options.indicatorTotal);
     const current = getElement(options.indicatorCurrent);
-    const totalSlides = flkty.cells.length;
+    const totalSlides = flkty.slides.length;
 
     // total
     if(total){
@@ -17,7 +17,8 @@ export function initSlidesIndicator(flkty, options){
         current.innerText = isZeroPad ? getNumber(index + 1) : index + 1;
 
         flkty.on('change', (index) => {
-            current.innerText = isZeroPad ? (index + 1).toString().padStart(2, '0') : index + 1;
+            const selectedNumber = flkty.selectedIndex + 1;
+            current.innerText = isZeroPad ? selectedNumber.toString().padStart(2, '0') : selectedNumber;
         });
     }
 }
