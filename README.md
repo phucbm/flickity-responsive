@@ -1,7 +1,7 @@
 # Flickity Responsive
 
 [![release](https://badgen.net/github/release/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/releases/latest)
-[![minified](https://badgen.net/badge/minified/4KB/cyan)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
+[![minified](https://badgen.net/badge/minified/7KB/cyan)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 [![jsdelivr](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
 [![npm weekly download](https://badgen.net/npm/dm/flickity-responsive)](https://www.npmjs.com/package/flickity-responsive)
 [![license](https://badgen.net/github/license/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
@@ -54,7 +54,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.6/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.7/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
@@ -149,7 +149,7 @@ npm run prod
 # Publish package
 npm publish
 
-# Netlify build
+# build
 npm run build
 ```
 
@@ -157,6 +157,6 @@ npm run build
 
 [MIT License](https://github.com/phucbm/flickity-responsive/blob/master/LICENSE)
 
-Copyright (c) 2023 Phuc Bui
+Copyright (c) 2024 Phuc Bui
 
 > Please leave a star ⭐️ to support my work. Thank you!
