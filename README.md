@@ -110,8 +110,8 @@ const carousel = new FlickityResponsive('.carousel', {
     nextArrow: undefined, // DOM element, jQuery element
 
     // indicator numbers
-    indicatorCurrent: undefined, // DOM element, jQuery element
-    indicatorTotal: undefined, // DOM element, jQuery element
+    indicatorCurrent: undefined, // current slides, DOM element, jQuery element
+    indicatorTotal: undefined, // total slides, DOM element, jQuery element
 
     // hide navigation elements if the slider is not slide-able
     responsiveNavigation: true,
