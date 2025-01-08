@@ -14,7 +14,9 @@ export function responsiveNavigation(flkty, options){
         flkty.options.customArrows ? flkty.options.customArrows.nextArrow.el : undefined
     ];
 
-    const isSlideable = flkty.slideableWidth > flkty.size.innerWidth;
+    const slideableWidth = Math.round(flkty.slideableWidth);
+    const innerWidth = Math.round(flkty.size.innerWidth);
+    const isSlideable = slideableWidth > innerWidth;
 
     elements.forEach(el => {
         if(!el || typeof el !== 'object') return;
