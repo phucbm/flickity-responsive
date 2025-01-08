@@ -28,4 +28,10 @@ export function responsiveNavigation(flkty, options){
             el.style.display = 'none';
         }
     });
+
+
+    if(isSlideable){
+        // add class to the element
+        flkty.element.classList.add(options._class.isCannotSlide);
+    }
 }
