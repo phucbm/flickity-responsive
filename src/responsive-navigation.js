@@ -6,13 +6,14 @@
 export function responsiveNavigation(flkty, options){
     if(options.responsiveNavigation !== true) return;
 
-    const elements = [
-        flkty.pageDots ? flkty.pageDots.holder : undefined,
-        flkty.prevButton ? flkty.prevButton.element : undefined,
-        flkty.nextButton ? flkty.nextButton.element : undefined,
-        flkty.options.customArrows ? flkty.options.customArrows.prevArrow.el : undefined,
-        flkty.options.customArrows ? flkty.options.customArrows.nextArrow.el : undefined
-    ];
+    const elements = [];
+    if(flkty.pageDots) elements.push(flkty.pageDots.holder);
+    if(flkty.prevButton) elements.push(flkty.prevButton.element);
+    if(flkty.nextButton) elements.push(flkty.nextButton.element);
+    if(flkty.options.hasCustomArrow){
+        elements.push(...flkty.options.customArrows.prevArrow.el);
+        elements.push(...flkty.options.customArrows.nextArrow.el);
+    }
 
     const slideableWidth = Math.round(flkty.slideableWidth);
     const innerWidth = Math.round(flkty.size.innerWidth);

@@ -53,21 +53,19 @@ if(typeof jQuery !== 'undefined'){
 // custom arrows
 const carouselArrows = new FlickityResponsive('.carousel-arrows', {
     prevNextButtons: false,
-    indicatorCurrent: document.querySelector('#current'),
-    indicatorTotal: document.querySelector('#total'),
-    prevArrow: document.querySelector('#prev'),
-    nextArrow: jQuery('#next'),
+    prevArrow: document.querySelectorAll('#prev, .backward'),
+    nextArrow: document.querySelectorAll('#next, .forward'),
     cellAlign: 'center',
     contain: true,
     groupCells: '100%',
 });
-const carouselArrows2 = new FlickityResponsive('.carousel-arrows-2', {
-    prevNextButtons: false,
-    indicatorCurrent: document.querySelector('#current-2'),
-    indicatorTotal: document.querySelector('#total-2'),
-    prevArrow: document.querySelector('#prev-2'),
-    nextArrow: jQuery('#next-2'),
-    cellAlign: 'center',
-    contain: true,
-    groupCells: 1,
-});
+
+// with indicator
+// const carouselIndicator = new FlickityResponsive('.carousel-indicator', {
+//     prevNextButtons: false,
+//     // indicatorCurrent: document.querySelector('.current-number'),
+//     // indicatorTotal: document.querySelector('.total-number'),
+//     cellAlign: 'center',
+//     contain: true,
+//     groupCells: 1,
+// });
