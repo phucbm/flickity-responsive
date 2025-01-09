@@ -113,6 +113,32 @@ jQuery('.carousel-2').flickityResponsive({
     <section class="mb100">
         <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
         <div class="d-flex jc-space-between ai-center">
+            <h2>Responsive navigation</h2>
+        </div>
+        <p>Automatically detect whether the slider is slide-able or not on load and resize.
+            If the slider is not slide-able, the navigation elements will be hidden, draggable will be disabled.
+        </p>
+        <div class="d-flex jc-space-between ai-center"></div>
+        <div data-flickity-responsive>
+            <div class="carousel-cell" style="min-width:250px;"></div>
+            <div class="carousel-cell" style="min-width:250px;"></div>
+            <div class="carousel-cell" style="min-width:250px;"></div>
+        </div>
+
+        <details>
+            <summary>View code</summary>
+            <pre>
+// custom arrows
+const carouselArrows = new FlickityResponsive('.carousel-arrows', {
+    responsiveNavigation: true, // true by default
+});</pre>
+        </details>
+    </section>
+
+
+    <section class="mb100">
+        <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
+        <div class="d-flex jc-space-between ai-center">
             <h2>Custom arrows and indicator numbers</h2>
         </div>
         <p>Use <code>prevArrow</code> and <code>nextArrow</code> to assign custom prev/next buttons.</p>
