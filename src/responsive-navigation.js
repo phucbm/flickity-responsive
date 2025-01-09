@@ -31,10 +31,10 @@ export function responsiveNavigation(flkty, options){
 
 
     if(isSlideable){
-        // add class to the element
-        flkty.element.classList.add(options._class.isCannotSlide);
-    }else{
         // remove class from the element
         flkty.element.classList.remove(options._class.isCannotSlide);
+    }else{
+        // add class from the element
+        flkty.element.classList.add(options._class.isCannotSlide);
     }
 }
