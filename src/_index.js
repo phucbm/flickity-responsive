@@ -1,22 +1,26 @@
 import {init} from "./helpers";
 import {getJSONObjectFromString} from "./utils";
 
-const _attr = {
-    init: 'data-flickity-responsive'
+export const _attr = {
+    init: 'data-flickity-responsive',
+    indicatorCurrent: 'data-indicator-current',
+    indicatorTotal: 'data-indicator-total',
+    prevArrow: 'data-prev-arrow',
+    nextArrow: 'data-next-arrow',
 };
 
 // override flickity default options
 const defaultFlickityOptions = {
     contain: true,
     destroy: false,
-    prevArrow: undefined,
-    nextArrow: undefined,
+    prevArrow: `[${_attr.prevArrow}]`,
+    nextArrow: `[${_attr.nextArrow}]`,
     responsiveNavigation: true,
 
     // indicator
     indicatorZeroPad: false,
-    indicatorCurrent: undefined,
-    indicatorTotal: undefined,
+    indicatorCurrent: `[${_attr.indicatorCurrent}]`,
+    indicatorTotal: `[${_attr.indicatorTotal}]`,
 
     // extra features
     forceMove: true,
