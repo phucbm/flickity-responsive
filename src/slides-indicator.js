@@ -2,17 +2,17 @@ import {getElements} from "./utils";
 
 export function initSlidesIndicator(flkty, options){
     const isZeroPad = options.indicatorZeroPad === true;
-    let total = getElements(options.indicatorTotal);
-    let current = getElements(options.indicatorCurrent);
+    let total = getElements(options.indicatorTotal, flkty.element);
+    let current = getElements(options.indicatorCurrent, flkty.element);
     const totalSlides = flkty.slides.length;
 
     // total
-    if(total){
+    if(total && total.length){
         total.forEach(el => el.innerText = isZeroPad ? getNumber(totalSlides) : totalSlides);
     }
 
     // current
-    if(current){
+    if(current && current.length){
         let index = flkty.selectedIndex;
         current.forEach(el => el.innerText = isZeroPad ? getNumber(index + 1) : index + 1);
 

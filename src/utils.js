@@ -1,3 +1,5 @@
+import {_attr} from "@/_index";
+
 /**
  * Debounce (ignore all, run the last)
  * https://www.freecodecamp.org/news/javascript-debounce-example/
@@ -82,9 +84,25 @@ export function getElement(el){
     return isjQueryElement(el) ? el.get()[0] : el;
 }
 
-export function getElements(el){
+export function getElements(el, scopeEl){
     if(typeof el === 'string'){
-        return document.querySelectorAll(el);
+        let wrapper = document;
+
+        // check if scopeEl is defined
+        if(scopeEl){
+            wrapper = scopeEl;
+
+            // find the greatest parent of scopeEl that has one single flickity instance
+            const parent = scopeEl.closest(`div:has([${_attr.init}]), div:has(.flickity-enabled)`);
+            if(parent){
+                const instanceCount = parent.querySelectorAll(`[${_attr.init}], .flickity-enabled`).length;
+                if(instanceCount === 1){
+                    wrapper = parent;
+                }
+            }
+        }
+
+        return wrapper.querySelectorAll(el);
     }
 
     let result = isjQueryElement(el) ? el.get() : el;
