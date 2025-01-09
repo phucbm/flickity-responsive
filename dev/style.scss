@@ -1,10 +1,14 @@
 .carousel-cell {
   width: calc(33.33% - 20px / 3);
   height: 200px;
-  margin-right: 10px;
+
   background: #8C8;
   border-radius: 5px;
   counter-increment: carousel-cell;
+}
+
+.carousel-cell:not(:last-child) {
+  margin-right: 10px;
 }
 
 /* cell number */
