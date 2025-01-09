@@ -25,8 +25,8 @@ export function initCustomArrows(flkty, options){
         const arrowInput = options[type];
         const arrowButton = getElement(arrowInput);
 
-        // skip if not a object type
-        if(typeof arrowButton !== 'object') return;
+        // skip if not an object type
+        if(!arrowButton || typeof arrowButton !== 'object') return;
 
         // assign event
         arrowButton.addEventListener('click', () => arrow.func());
@@ -79,15 +79,15 @@ export function updateCustomArrowsDisableStatus(flkty, options){
 
     if(slidePosition === 0){
         // disable prev button
-        prevArrow.setAttribute('disabled', 'disabled');
-        nextArrow.removeAttribute('disabled');
+        prevArrow?.setAttribute('disabled', 'disabled');
+        nextArrow?.removeAttribute('disabled');
     }else if(slidePosition === 1){
         // disable next prev button
-        nextArrow.setAttribute('disabled', 'disabled');
-        prevArrow.removeAttribute('disabled');
+        nextArrow?.setAttribute('disabled', 'disabled');
+        prevArrow?.removeAttribute('disabled');
     }else{
         // remove disable
-        prevArrow.removeAttribute('disabled');
-        nextArrow.removeAttribute('disabled');
+        prevArrow?.removeAttribute('disabled');
+        nextArrow?.removeAttribute('disabled');
     }
 }
