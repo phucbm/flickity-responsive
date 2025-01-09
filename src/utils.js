@@ -1,4 +1,4 @@
-import {_attr} from "@/_index";
+import {_attr} from "./_index";
 
 /**
  * Debounce (ignore all, run the last)
