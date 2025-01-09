@@ -54,7 +54,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.7/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.1.0/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
@@ -157,6 +157,6 @@ npm run build
 
 [MIT License](https://github.com/phucbm/flickity-responsive/blob/master/LICENSE)
 
-Copyright (c) 2024 Phuc Bui
+Copyright (c) 2021-2025 Phuc Bui
 
 > Please leave a star ⭐️ to support my work. Thank you!

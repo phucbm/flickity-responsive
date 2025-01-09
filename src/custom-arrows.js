@@ -1,4 +1,4 @@
-import {getElement} from "./utils";
+import {getElements} from "./utils";
 
 /**
  * Init custom arrows
@@ -10,10 +10,12 @@ import {getElement} from "./utils";
 export function initCustomArrows(flkty, options){
     const customArrows = {
         prevArrow: {
-            func: () => flkty.previous()
+            func: () => flkty.previous(),
+            el: []
         },
         nextArrow: {
-            func: () => flkty.next()
+            func: () => flkty.next(),
+            el: []
         }
     };
     let hasCustomArrow = false;
@@ -23,16 +25,22 @@ export function initCustomArrows(flkty, options){
         if(!options.hasOwnProperty(type)) return;
 
         const arrowInput = options[type];
-        const arrowButton = getElement(arrowInput);
+        if(!arrowInput) return;
+        const arrowButtons = getElements(arrowInput);
 
-        // skip if not a object type
-        if(typeof arrowButton !== 'object') return;
+        // skip if not an object type
+        if(!arrowButtons || typeof arrowButtons !== 'object') return;
+
+        // check if all items in the array are not undefined
+        if(Array.isArray(arrowButtons) && arrowButtons.every(el => el === undefined)) return;
 
         // assign event
-        arrowButton.addEventListener('click', () => arrow.func());
+        arrowButtons.forEach(el => {
+            if(el) el.addEventListener('click', () => arrow.func());
+        });
 
         // save button
-        customArrows[type].el = arrowButton;
+        customArrows[type].el = arrowButtons;
 
         // add class
         flkty.element.classList.add(`has-custom-${type}`);
@@ -41,6 +49,7 @@ export function initCustomArrows(flkty, options){
 
     // save custom arrows
     flkty.options.customArrows = customArrows;
+    flkty.options.hasCustomArrow = hasCustomArrow;
 
     // update disable status
     if(hasCustomArrow){
@@ -72,22 +81,30 @@ function getSlidePosition(flkty){
 export function updateCustomArrowsDisableStatus(flkty, options){
     // no disabled status if is wrapAround (infinite)
     if(options.isInfinite) return;
-    const prevArrow = flkty.options.customArrows.prevArrow.el;
-    const nextArrow = flkty.options.customArrows.nextArrow.el;
+    const prevArrows = flkty.options.customArrows.prevArrow.el;
+    const nextArrows = flkty.options.customArrows.nextArrow.el;
 
     const slidePosition = getSlidePosition(flkty);
 
+    const setDisabled = (els, isDisabled) => {
+        if(isDisabled){
+            els.forEach(el => el?.setAttribute('disabled', 'disabled'));
+        }else{
+            els.forEach(el => el?.removeAttribute('disabled'));
+        }
+    };
+
     if(slidePosition === 0){
         // disable prev button
-        prevArrow.setAttribute('disabled', 'disabled');
-        nextArrow.removeAttribute('disabled');
+        setDisabled(prevArrows, true);
+        setDisabled(nextArrows, false);
     }else if(slidePosition === 1){
         // disable next prev button
-        nextArrow.setAttribute('disabled', 'disabled');
-        prevArrow.removeAttribute('disabled');
+        setDisabled(prevArrows, false);
+        setDisabled(nextArrows, true);
     }else{
         // remove disable
-        prevArrow.removeAttribute('disabled');
-        nextArrow.removeAttribute('disabled');
+        setDisabled(nextArrows, false);
+        setDisabled(prevArrows, false);
     }
 }

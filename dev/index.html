@@ -4,9 +4,45 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="description"
+          content="Flickity Responsive is a JavaScript library that extends Flickity to support responsive design.">
+    <meta name="keywords" content="flickity, responsive, javascript, library, slider, carousel"/>
+    <meta name="author" content="Phuc Bui"/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="googlebot" content="index, follow"/>
+    <meta name="google" content="notranslate"/>
+    <meta name="generator" content="Visual Studio Code"/>
+    <meta name="rating" content="general"/>
+    <meta name="revisit-after" content="7 days"/>
+    <meta name="distribution" content="global"/>
+    <meta name="theme-color" content="#ffffff"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@phucbm"/>
+    <meta name="twitter:creator" content="@phucbm"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Flickity Responsive"/>
+    <meta property="og:title" content="Flickity Responsive"/>
+    <meta property="og:description"
+          content="Flickity Responsive is a JavaScript library that extends Flickity to support responsive design."/>
+    <meta property="og:image"
+          content="https://raw.githubusercontent.com/phucbm/flickity-responsive/master/public/images/favicon.png"/>
+    <meta property="og:url" content="https://github.com/phucbm/flickity-responsive"/>
 
     <title>Flickity Responsive</title>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NC8XZ762Y4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-NC8XZ762Y4');
+    </script>
 </head>
 
 <body>
@@ -101,7 +137,6 @@ jQuery('.carousel-2').flickityResponsive({
 
     <section class="mb100">
         <h2>Init with HTML</h2>
-        <p>Navigation elements (dots, arrows) will auto-hide if the carousel is not slide-able.</p>
         <div data-flickity-responsive='{ "cellAlign": "left" }'>
             <div class="carousel-cell" style="width:260px;"></div>
             <div class="carousel-cell" style="width:260px;"></div>
@@ -113,9 +148,82 @@ jQuery('.carousel-2').flickityResponsive({
     <section class="mb100">
         <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
         <div class="d-flex jc-space-between ai-center">
-            <h2>Custom arrows and indicator numbers</h2>
+            <h2>Responsive navigation</h2>
         </div>
-        <p>Use <code>prevArrow</code> and <code>nextArrow</code> to assign custom prev/next buttons.</p>
+        <p>Automatically detect whether the slider is slide-able or not on load and resize.
+            If the slider is not slide-able, the navigation elements will be hidden, draggable will be disabled.
+        </p>
+        <div class="d-flex jc-space-between ai-center"></div>
+        <div data-flickity-responsive>
+            <div class="carousel-cell" style="min-width:250px;"></div>
+            <div class="carousel-cell" style="min-width:250px;"></div>
+            <div class="carousel-cell" style="min-width:250px;"></div>
+        </div>
+
+        <details>
+            <summary>View code</summary>
+            <pre>
+// custom arrows
+const carouselArrows = new FlickityResponsive('.carousel-arrows', {
+    responsiveNavigation: true, // true by default
+});</pre>
+        </details>
+    </section>
+
+
+    <section class="mb100">
+        <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
+        <div class="d-flex jc-space-between ai-center">
+            <h2>Custom arrows</h2>
+        </div>
+        <p>Use <code>prevArrow</code> and <code>nextArrow</code> to assign custom prev/next buttons. Allow to assign
+            multiple arrows.</p>
+        <div>
+            <div class="d-flex jc-space-between ai-center mb20">
+                <div class="d-flex ai-center" style="gap:10px;">
+                    <button class="backward">Go backward</button>
+                    <button class="forward">Go forward</button>
+                </div>
+                <div class="d-flex ai-center" style="gap:10px;">
+                    <button id="prev">Prev</button>
+                    <div><span data-indicator-current>0</span>/<span data-indicator-total>0</span></div>
+                    <button id="next">Next</button>
+                </div>
+            </div>
+            <div class="carousel-arrows">
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+            </div>
+        </div>
+
+        <details>
+            <summary>Using JS</summary>
+            <pre>
+// custom arrows
+const carouselArrows = new FlickityResponsive('.carousel-arrows', {
+    prevArrow: document.querySelectorAll('#prev, .backward'),
+    nextArrow: document.querySelectorAll('#next, .forward')
+});</pre>
+        </details>
+
+        <details>
+            <summary>Using HTML attribute</summary>
+            <p>
+                Use <code>data-prev-arrow</code> and <code>data-next-arrow</code> to assign custom prev/next buttons.
+                Make sure the slider element and the arrow element are in the same parent.
+            </p>
+        </details>
+    </section>
+
+
+    <section class="mb100">
+        <p style="margin-bottom:0;"><span class="extra-feature">Extra feature</span></p>
+        <div class="d-flex jc-space-between ai-center">
+            <h2>Indicator numbers</h2>
+        </div>
         <p>Use <code>indicatorCurrent</code> and <code>indicatorTotal</code> to receive update about slide's position.
         </p>
         <p>
@@ -124,70 +232,47 @@ jQuery('.carousel-2').flickityResponsive({
             total number will be 2. The first slide will have 3 cells and the second slide will have 2 cells.
             The total slide number is calculated by <code>groupCells</code>.
         </p>
-        <div class="d-flex jc-space-between ai-center">
-            <h3><code>groupCells:"100%"</code></h3>
-            <div class="d-flex ai-center" style="gap:10px;">
-                <button id="prev">Prev</button>
-                <div><span id="current">0</span>/<span id="total">0</span></div>
-                <button id="next">Next</button>
+
+        <div>
+            <div class="d-flex jc-space-between ai-center">
+                <div class="d-flex ai-center" style="gap:10px;">
+                    <div><span data-indicator-current>0</span>/<span data-indicator-total>0</span></div>
+                </div>
+                <div class="d-flex ai-center" style="gap:10px;">
+                    <button data-prev-arrow>Prev</button>
+                    <div><span data-indicator-current>0</span>/<span data-indicator-total>0</span></div>
+                    <button data-next-arrow>Next</button>
+                </div>
+            </div>
+            <div data-flickity-responsive>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
             </div>
         </div>
-        <div class="carousel-arrows">
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-        </div>
+
 
         <details>
-            <summary>View code</summary>
+            <summary>Using JS</summary>
+
             <pre>
-// custom arrows
-const carouselArrows = new FlickityResponsive('.carousel-arrows', {
-    prevNextButtons: false,
-    indicatorCurrent: document.querySelector('#current'),
-    indicatorTotal: document.querySelector('#total'),
-    prevArrow: document.querySelector('#prev'),
-    nextArrow: jQuery('#next'),
-    cellAlign: 'center',
-    contain: true,
-    groupCells: "100%"
-});</pre>
+const carouselIndicator = new FlickityResponsive('.carousel-indicator', {
+    indicatorCurrent: document.querySelector('.current-number'),
+    indicatorTotal: document.querySelector('.total-number')
+});
+            </pre>
+
         </details>
-
-        <div class="d-flex jc-space-between ai-center">
-            <h3><code>groupCells:1</code></h3>
-            <div class="d-flex ai-center" style="gap:10px;">
-                <button id="prev-2">Prev</button>
-                <div><span id="current-2">0</span>/<span id="total-2">0</span></div>
-                <button id="next-2">Next</button>
-            </div>
-        </div>
-        <div class="carousel-arrows-2">
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-            <div class="carousel-cell"></div>
-        </div>
-
-
         <details>
-            <summary>View code</summary>
+            <summary>Using HTML attribute</summary>
 
-            <pre>
-// custom arrows
-const carouselArrows = new FlickityResponsive('.carousel-arrows', {
-    prevNextButtons: false,
-    indicatorCurrent: document.querySelector('#current'),
-    indicatorTotal: document.querySelector('#total'),
-    prevArrow: document.querySelector('#prev'),
-    nextArrow: jQuery('#next'),
-    cellAlign: 'center',
-    contain: true,
-    groupCells: 1
-});</pre>
+            <p>
+                Use <code>data-indicator-current</code> and <code>data-indicator-total</code> to receive update about
+                slide's position.
+                Make sure the slider element and the indicator element are in the same parent.
+            </p>
 
         </details>
     </section>
@@ -240,7 +325,7 @@ const carouselArrows = new FlickityResponsive('.carousel-arrows', {
                 </svg>
             </a>
         </p>
-        <p>Copyright (c) 2023 <a href="https://github.com/phucbm" target="_blank">Phuc Bui</a></p>
+        <p>Copyright (c) 2021-2025 <a href="https://github.com/phucbm" target="_blank">Phuc Bui</a></p>
         <p>Please leave a <a href="https://github.com/phucbm/flickity-responsive" style="font-weight:700;">star ⭐️</a>
             to support my work. Thank you!</p>
     </footer>

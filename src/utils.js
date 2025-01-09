@@ -1,3 +1,5 @@
+import {_attr} from "./_index";
+
 /**
  * Debounce (ignore all, run the last)
  * https://www.freecodecamp.org/news/javascript-debounce-example/
@@ -70,10 +72,46 @@ export function getJSONObjectFromString(string){
 
 
 /**
- * Get DOM node from jQuery|DOM
+ * Get DOM node from jQuery|DOM|selector
  * @param el
  * @returns {*}
  */
 export function getElement(el){
+    if(typeof el === 'string'){
+        return document.querySelector(el);
+    }
+
     return isjQueryElement(el) ? el.get()[0] : el;
+}
+
+export function getElements(el, scopeEl){
+    if(typeof el === 'string'){
+        let wrapper = document;
+
+        // check if scopeEl is defined
+        if(scopeEl){
+            wrapper = scopeEl;
+
+            // find the greatest parent of scopeEl that has one single flickity instance
+            const parent = scopeEl.closest(`div:has([${_attr.init}]), div:has(.flickity-enabled)`);
+            if(parent){
+                const instanceCount = parent.querySelectorAll(`[${_attr.init}], .flickity-enabled`).length;
+                if(instanceCount === 1){
+                    wrapper = parent;
+                }
+            }
+        }
+
+        return wrapper.querySelectorAll(el);
+    }
+
+    let result = isjQueryElement(el) ? el.get() : el;
+
+    // is NodeList
+    if(result instanceof NodeList) return result;
+
+    // ensure current is array
+    if(!Array.isArray(result)) result = [result];
+
+    return result;
 }

@@ -1,24 +1,24 @@
-import {getElement} from "./utils";
+import {getElements} from "./utils";
 
 export function initSlidesIndicator(flkty, options){
     const isZeroPad = options.indicatorZeroPad === true;
-    const total = getElement(options.indicatorTotal);
-    const current = getElement(options.indicatorCurrent);
+    let total = getElements(options.indicatorTotal, flkty.element);
+    let current = getElements(options.indicatorCurrent, flkty.element);
     const totalSlides = flkty.slides.length;
 
     // total
-    if(total){
-        total.innerText = isZeroPad ? getNumber(totalSlides) : totalSlides;
+    if(total && total.length){
+        total.forEach(el => el.innerText = isZeroPad ? getNumber(totalSlides) : totalSlides);
     }
 
     // current
-    if(current){
+    if(current && current.length){
         let index = flkty.selectedIndex;
-        current.innerText = isZeroPad ? getNumber(index + 1) : index + 1;
+        current.forEach(el => el.innerText = isZeroPad ? getNumber(index + 1) : index + 1);
 
         flkty.on('change', (index) => {
             const selectedNumber = flkty.selectedIndex + 1;
-            current.innerText = isZeroPad ? selectedNumber.toString().padStart(2, '0') : selectedNumber;
+            current.forEach(el => el.innerText = isZeroPad ? getNumber(selectedNumber) : selectedNumber);
         });
     }
 }
