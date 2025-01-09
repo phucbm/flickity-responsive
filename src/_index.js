@@ -22,7 +22,7 @@ const defaultFlickityOptions = {
     forceMove: true,
 
     _class: {
-        buttonFreeze: 'flickity-button-freeze',
+        isFreeze: 'is-freeze', // for navigation buttons (prev, next, custom arrows, dots)
         isForceMove: 'is-force-move',
         isCannotSlide: 'is-cannot-slide'
     }
