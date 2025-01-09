@@ -70,10 +70,30 @@ export function getJSONObjectFromString(string){
 
 
 /**
- * Get DOM node from jQuery|DOM
+ * Get DOM node from jQuery|DOM|selector
  * @param el
  * @returns {*}
  */
 export function getElement(el){
+    if(typeof el === 'string'){
+        return document.querySelector(el);
+    }
+
     return isjQueryElement(el) ? el.get()[0] : el;
+}
+
+export function getElements(el){
+    if(typeof el === 'string'){
+        return document.querySelectorAll(el);
+    }
+
+    let result = isjQueryElement(el) ? el.get() : el;
+
+    // is NodeList
+    if(result instanceof NodeList) return result;
+
+    // ensure current is array
+    if(!Array.isArray(result)) result = [result];
+
+    return result;
 }
