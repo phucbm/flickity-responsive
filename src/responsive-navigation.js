@@ -39,4 +39,8 @@ export function responsiveNavigation(flkty, options){
         // add class from the element
         flkty.element.classList.add(options._class.isCannotSlide);
     }
+
+    // draggable
+    flkty.options.draggable = isSlideable;
+    flkty.updateDraggable();
 }
