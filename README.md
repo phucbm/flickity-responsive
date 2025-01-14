@@ -123,6 +123,9 @@ const carousel = new FlickityResponsive('.carousel', {
 
     // force move
     forceMove: true, // make sure that every time an arrows clicked, the carousel will move
+
+    // aria hidden focus
+    ariaHiddenFocus: true, // Add tabindex="-1" to all elements with or inside aria-hidden="true"
 });
 ```
 
