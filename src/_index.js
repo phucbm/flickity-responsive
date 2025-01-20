@@ -24,6 +24,7 @@ const defaultFlickityOptions = {
 
     // extra features
     forceMove: true,
+    ariaHiddenFocus: true,
 
     _class: {
         isFreeze: 'is-freeze', // for navigation buttons (prev, next, custom arrows, dots)
