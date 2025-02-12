@@ -26,7 +26,7 @@ export function initCustomArrows(flkty, options){
 
         const arrowInput = options[type];
         if(!arrowInput) return;
-        const arrowButtons = getElements(arrowInput);
+        const arrowButtons = getElements(arrowInput, flkty.element);
 
         // skip if not an object type
         if(!arrowButtons || typeof arrowButtons !== 'object') return;
