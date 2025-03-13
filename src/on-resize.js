@@ -5,6 +5,9 @@ export function onResize(el, options){
     let flkty = Flickity.data(el);
     if(!flkty) return;
 
+    // resize to update flickity layout
+    flkty.resize();
+
     // responsive navigation
     responsiveNavigation(flkty, options);
 
