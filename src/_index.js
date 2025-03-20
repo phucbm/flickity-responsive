@@ -7,6 +7,7 @@ export const _attr = {
     indicatorTotal: 'data-indicator-total',
     prevArrow: 'data-prev-arrow',
     nextArrow: 'data-next-arrow',
+    wrapper: 'data-flickity-wrapper',
 };
 
 // override flickity default options
