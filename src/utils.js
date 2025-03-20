@@ -92,12 +92,19 @@ export function getElements(el, scopeEl){
         if(scopeEl){
             wrapper = scopeEl;
 
-            // find the greatest parent of scopeEl that has one single flickity instance
-            const parent = scopeEl.closest(`div:has([${_attr.init}]), div:has(.flickity-enabled)`);
-            if(parent){
-                const instanceCount = parent.querySelectorAll(`[${_attr.init}], .flickity-enabled`).length;
-                if(instanceCount === 1){
-                    wrapper = parent;
+            // custom wrapper (added by user when needed)
+            if(scopeEl.closest(`[${_attr.wrapper}]`)){
+                wrapper = scopeEl.closest(`[${_attr.wrapper}]`);
+            }else{
+                // find the greatest parent of scopeEl that has one single flickity instance
+                const parent = scopeEl.closest(`div:has([${_attr.init}]), div:has(.flickity-enabled)`);
+                if(parent){
+                    const instanceCount = parent.querySelectorAll(`[${_attr.init}], .flickity-enabled`).length;
+                    if(instanceCount === 1){
+                        wrapper = parent;
+                    }else{
+                        console.warn(`Multiple Flickity instances found in ${parent}. Using ${wrapper} instead.`);
+                    }
                 }
             }
         }
