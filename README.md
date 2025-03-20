@@ -54,7 +54,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.1.3/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.1.4/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
