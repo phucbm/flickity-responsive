@@ -25,6 +25,7 @@ const defaultFlickityOptions = {
 
     // extra features
     forceMove: true,
+    ariaHiddenFocusSelector: `[aria-hidden="true"] a, [aria-hidden="true"] button`,
     ariaHiddenFocus: true,
 
     _class: {

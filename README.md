@@ -54,7 +54,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.1.4/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.1.5/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
@@ -126,6 +126,7 @@ const carousel = new FlickityResponsive('.carousel', {
 
     // aria hidden focus
     ariaHiddenFocus: true, // Add tabindex="-1" to all elements with or inside aria-hidden="true"
+    ariaHiddenFocusSelector: `[aria-hidden="true"] a, [aria-hidden="true"] button`,
 });
 ```
 

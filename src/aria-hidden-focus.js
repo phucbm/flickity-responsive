@@ -6,7 +6,7 @@
 export function initAriaHiddenFocus(flkty, options){
     if(!options.ariaHiddenFocus) return;
 
-    flkty.element.querySelectorAll(`[aria-hidden="true"] a, [aria-hidden="true"] button`).forEach(el => {
+    flkty.element.querySelectorAll(options.ariaHiddenFocusSelector).forEach(el => {
         el.setAttribute('tabindex', '-1');
 
         el.classList.add('is-focus-disabled');
