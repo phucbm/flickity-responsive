@@ -35,7 +35,6 @@
     "@babel/preset-env": "^7.15.8",
     "@viivue/atomic-css": "^1.1.4",
     "babel-loader": "^8.2.2",
-    "babel-preset-es2015": "^6.24.1",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.1.0",
     "cross-env": "^7.0.3",
