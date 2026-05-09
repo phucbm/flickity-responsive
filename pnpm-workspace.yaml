@@ -1,0 +1,6 @@
+overrides:
+  postcss@<8.4.31: '>=8.4.31'
+  postcss@<8.5.10: '>=8.5.10'
+  serialize-javascript@<7.0.5: '>=7.0.5'
+  serialize-javascript@<=7.0.2: '>=7.0.3'
+  webpack-dev-server@<=5.2.0: '>=5.2.1'
