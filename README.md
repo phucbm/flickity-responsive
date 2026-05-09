@@ -1,11 +1,12 @@
 # Flickity Responsive
 
-[![release](https://badgen.net/github/release/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/releases/latest)
-[![minified](https://badgen.net/badge/minified/7KB/cyan)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
-[![jsdelivr](https://data.jsdelivr.com/v1/package/gh/phucbm/flickity-responsive/badge?style=rounded)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
-[![npm weekly download](https://badgen.net/npm/dm/flickity-responsive)](https://www.npmjs.com/package/flickity-responsive)
-[![license](https://badgen.net/github/license/phucbm/flickity-responsive/)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
+[![npm version](https://badgen.net/npm/v/flickity-responsive?icon=npm)](https://www.npmjs.com/package/flickity-responsive)
+[![npm downloads](https://badgen.net/npm/dm/flickity-responsive?icon=npm)](https://www.npmjs.com/package/flickity-responsive)
+[![jsdelivr hits](https://badgen.net/jsdelivr/hits/gh/phucbm/flickity-responsive?icon=jsdelivr)](https://www.jsdelivr.com/package/gh/phucbm/flickity-responsive)
+[![GitHub release](https://badgen.net/jsdelivr/rank/npm/flickity-responsive?icon=jsdelivr)](https://github.com/phucbm/flickity-responsive/releases)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9f75e2e8-1ebf-4aa7-83f0-c4fb4942df2e/deploy-status)](https://app.netlify.com/sites/flickity/deploys)
+[![license](https://badgen.net/github/license/phucbm/flickity-responsive?icon=github)](https://github.com/phucbm/flickity-responsive/blob/main/LICENSE)
+[![Made in Vietnam](https://raw.githubusercontent.com/webuild-community/badge/master/svg/made.svg)](https://webuild.community)
 
 > A vanilla JS plugin that adds `responsive` option for Flickity. And more extendable settings, see [#docs](#docs)
 
@@ -54,7 +55,7 @@ import {FlickityResponsive} from "flickity-responsive";
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.0.7/flickity-responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/phucbm/flickity-responsive@2.1.5/flickity-responsive.min.js"></script>
 ```
 
 ## Usage
@@ -123,6 +124,10 @@ const carousel = new FlickityResponsive('.carousel', {
 
     // force move
     forceMove: true, // make sure that every time an arrows clicked, the carousel will move
+
+    // aria hidden focus
+    ariaHiddenFocus: true, // Add tabindex="-1" to all elements with or inside aria-hidden="true"
+    ariaHiddenFocusSelector: `[aria-hidden="true"] a, [aria-hidden="true"] button`,
 });
 ```
 
@@ -157,6 +162,6 @@ npm run build
 
 [MIT License](https://github.com/phucbm/flickity-responsive/blob/master/LICENSE)
 
-Copyright (c) 2024 Phuc Bui
+Copyright (c) 2021-2025 Phuc Bui
 
 > Please leave a star ⭐️ to support my work. Thank you!

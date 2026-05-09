@@ -16,7 +16,7 @@ const bannerConfig = {
  * ${packageInfo.prettyName} v${packageInfo.version}
  * @author ${packageInfo.author.name}
  * @homepage ${packageInfo.homepage}
- * @license ${packageInfo.license} ${new Date().getFullYear()}
+ * @license ${packageInfo.license} 2021-${new Date().getFullYear()}
  */`,
     raw: true
 };

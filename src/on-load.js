@@ -2,6 +2,7 @@ import {initSlidesIndicator} from "./slides-indicator";
 import {responsiveNavigation} from "./responsive-navigation";
 import {validateWrapAround} from "./helpers";
 import {initForceMove} from "./force-move";
+import {initAriaHiddenFocus} from "./aria-hidden-focus";
 
 export function onLoad(el, options){
     let flkty = Flickity.data(el);
@@ -19,4 +20,7 @@ export function onLoad(el, options){
 
     // one item per slide
     initForceMove(flkty, options);
+
+    // aria hidden focus
+    initAriaHiddenFocus(flkty, options);
 }

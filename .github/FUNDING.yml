@@ -1,7 +1,7 @@
 # These are supported funding model platforms
 
-github: # [phucbm]
-patreon: # Replace with a single Patreon username
+github: phucbm
+patreon: phucbm
 open_collective: phucbm
 ko_fi: phucbm
 tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/babel

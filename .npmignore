@@ -3,6 +3,7 @@
 .babelrc.json
 .eslintrc.json
 .prettierrc.json
+.github
 jsconfig.json
 /config
 /public
